@@ -1,14 +1,22 @@
 {
   "Proto-Indo-European": null,
-  "Proto-Germanic": "Proto-Indo-European",
-  "Old Frisian": "Proto-Germanic",
+  "Germanic": "Proto-Indo-European",
+  "Old Frisian": "Germanic",
   "West Frisian": "Old Frisian",
-  "Old Dutch": "Proto-Germanic",
+  "Old Dutch": "Germanic",
   "Middle Dutch": "Old Dutch",
   "Dutch": "Middle Dutch",
-  "Old High German": "Proto-Germanic",
-  "German": "Old High German",
+  "Old High German": "Germanic",
+  "German": "Middle High German",
+  "early Scandinavian": "Germanic",
   "Old Icelandic": "Old Norse",
+  "Norn": "Old Norse",
   "Old Swedish": "Old Norse",
-  "Swedish": "Old Swedish"
+  "Swedish": "Old Swedish",
+  "Old Danish": "Old Norse",
+  "Danish": "Old Danish",
+  "Gothic": "Germanic",
+  "Old Saxon": "Germanic",
+  "Middle Low German": "Old Saxon",
+  "Middle High German": "Old High German"
 }
