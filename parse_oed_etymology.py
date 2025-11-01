@@ -26,7 +26,28 @@ def parse_html(file_path):
         raise ValueError("Etymology section not found in HTML.")
     return ety
 
-# ---------- STEP 3: Extract language → forms mapping ----------
+# ---------- STEP 3: Split HTML into Germanic and Indo-European sections ----------
+def split_and_parse(ety, hierarchy):
+    html = str(ety)
+    parts = html.split('<span class="etymology-arrow">&lt;</span>', 1)
+
+    if len(parts) != 2:
+        raise ValueError("Could not split etymology into Germanic and Indo-European blocks.")
+
+    germanic_html, indo_html = parts
+
+    germanic_soup = BeautifulSoup(germanic_html, "html.parser")
+    indo_soup = BeautifulSoup(indo_html, "html.parser")
+
+    germanic_entries = extract_language_forms(germanic_soup)
+    indo_entries = extract_language_forms(indo_soup)
+
+    germanic_entries = attach_parents(germanic_entries, hierarchy)
+    indo_entries = attach_parents(indo_entries, hierarchy)
+
+    return germanic_entries, indo_entries
+
+# ---------- STEP 4: Extract language → forms mapping ----------
 def extract_language_forms(etymology_div):
     pairs = []
     spans = etymology_div.find_all("span", class_="language-name")
@@ -49,34 +70,20 @@ def extract_language_forms(etymology_div):
         pairs.append({"language": lang, "forms": unique_forms})
     return pairs
 
-# ---------- STEP 4: Attach parent relationships ----------
+# ---------- STEP 5: Attach parent relationships ----------
 def attach_parents(entries, hierarchy):
     for e in entries:
         e["parent"] = hierarchy.get(e["language"], None)
     return entries
 
-# ---------- STEP 5: Split HTML into Germanic and Indo-European sections ----------
-def split_and_parse(ety, hierarchy):
-    html = str(ety)
-    parts = html.split('<span class="etymology-arrow">&lt;</span>', 1)
+# ---------- STEP 6: Export to JSON ----------
+def export_json(word, entries, filename_suffix):
+    out_path = Path(OUTPUT_DIR) / f"{word}_{filename_suffix}.json"
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(entries, f, ensure_ascii=False, indent=2)
+    print(f"✅ Exported: {out_path}")
 
-    if len(parts) != 2:
-        raise ValueError("Could not split etymology into Germanic and Indo-European blocks.")
-
-    germanic_html, indo_html = parts
-
-    germanic_soup = BeautifulSoup(germanic_html, "html.parser")
-    indo_soup = BeautifulSoup(indo_html, "html.parser")
-
-    germanic_entries = extract_language_forms(germanic_soup)
-    indo_entries = extract_language_forms(indo_soup)
-
-    germanic_entries = attach_parents(germanic_entries, hierarchy)
-    indo_entries = attach_parents(indo_entries, hierarchy)
-
-    return germanic_entries, indo_entries
-
-# ---------- STEP 6: Main pipeline ----------
+# ---------- Main pipeline ----------
 def main():
     hierarchy = load_hierarchy()
     ety = parse_html(INPUT_HTML)
@@ -85,6 +92,9 @@ def main():
     print("\n------ Germanic entries ------")
     for e in germanic:
         print(f"{e['language']}: {', '.join(e['forms'])} (parent: {e['parent']})")
+    
+    word = Path(INPUT_HTML).stem  # e.g. "father"
+    export_json(word, germanic, "germanic")
 
 if __name__ == "__main__":
     main()

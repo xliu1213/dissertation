@@ -1,0 +1,136 @@
+[
+  {
+    "language": "Old Frisian",
+    "forms": [
+      "fader",
+      "feder"
+    ],
+    "parent": "Germanic"
+  },
+  {
+    "language": "West Frisian",
+    "forms": [
+      "faar"
+    ],
+    "parent": "Old Frisian"
+  },
+  {
+    "language": "Old Dutch",
+    "forms": [
+      "fadar",
+      "fader"
+    ],
+    "parent": "Germanic"
+  },
+  {
+    "language": "Middle Dutch",
+    "forms": [
+      "vāder"
+    ],
+    "parent": "Old Dutch"
+  },
+  {
+    "language": "Dutch",
+    "forms": [
+      "vader"
+    ],
+    "parent": "Middle Dutch"
+  },
+  {
+    "language": "Old Saxon",
+    "forms": [
+      "fadar",
+      "fader"
+    ],
+    "parent": "Germanic"
+  },
+  {
+    "language": "Middle Low German",
+    "forms": [
+      "vāder"
+    ],
+    "parent": "Old Saxon"
+  },
+  {
+    "language": "Old High German",
+    "forms": [
+      "fater"
+    ],
+    "parent": "Germanic"
+  },
+  {
+    "language": "Middle High German",
+    "forms": [
+      "vater"
+    ],
+    "parent": "Old High German"
+  },
+  {
+    "language": "German",
+    "forms": [
+      "Vater"
+    ],
+    "parent": "Middle High German"
+  },
+  {
+    "language": "early Scandinavian",
+    "forms": [
+      "faþiR"
+    ],
+    "parent": "Germanic"
+  },
+  {
+    "language": "Old Icelandic",
+    "forms": [
+      "faðir"
+    ],
+    "parent": "Old Norse"
+  },
+  {
+    "language": "Norn",
+    "forms": [
+      "fa",
+      "fy",
+      "fyrin"
+    ],
+    "parent": "Old Norse"
+  },
+  {
+    "language": "Old Swedish",
+    "forms": [
+      "faþir"
+    ],
+    "parent": "Old Norse"
+  },
+  {
+    "language": "Swedish",
+    "forms": [
+      "fader",
+      "far"
+    ],
+    "parent": "Old Swedish"
+  },
+  {
+    "language": "Old Danish",
+    "forms": [
+      "fathær"
+    ],
+    "parent": "Old Norse"
+  },
+  {
+    "language": "Danish",
+    "forms": [
+      "fader",
+      "far"
+    ],
+    "parent": "Old Danish"
+  },
+  {
+    "language": "Gothic",
+    "forms": [
+      "fadar",
+      "atta"
+    ],
+    "parent": "Germanic"
+  }
+]
