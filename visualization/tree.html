@@ -1,0 +1,67 @@
+<head>
+<meta charset="UTF-8">
+<title>Germanic "Father" Tree</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  body {
+    font-family: sans-serif;
+    background: #fafafa;
+  }
+  .node circle {
+    fill: #69b3a2;
+    stroke: #333;
+    stroke-width: 1.5px;
+  }
+  .node text {
+    font-size: 12px;
+  }
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+  }
+</style>
+</head>
+<body>
+<h2>Germanic “Father” Language Evolution Tree</h2>
+<svg width="1000" height="800"></svg>
+
+<script>
+const width = 1000, height = 800;
+const svg = d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(80,0)");
+
+d3.json("tree_germanic.json").then(function(data) {
+  const root = d3.hierarchy(data);
+  const treeLayout = d3.tree().size([height - 100, width - 300]);
+  treeLayout(root);
+
+  // links
+  svg.selectAll(".link")
+    .data(root.links())
+    .join("path")
+    .attr("class", "link")
+    .attr("d", d3.linkHorizontal()
+      .x(d => d.y)
+      .y(d => d.x)
+    );
+
+  // nodes
+  const node = svg.selectAll(".node")
+    .data(root.descendants())
+    .join("g")
+    .attr("class", "node")
+    .attr("transform", d => `translate(${d.y},${d.x})`);
+
+  node.append("circle").attr("r", 6);
+
+  node.append("text")
+    .attr("dy", 3)
+    .attr("x", d => d.children ? -10 : 10)
+    .style("text-anchor", d => d.children ? "end" : "start")
+    .text(d => d.data.name + (d.data.forms ? " (" + d.data.forms.join(", ") + ")" : ""));
+});
+</script>
+</body>
+</html>

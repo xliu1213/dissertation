@@ -1,0 +1,93 @@
+{
+  "name": "Germanic",
+  "children": [
+    {
+      "name": "Old Frisian",
+      "forms": [
+        "fader",
+        "feder"
+      ],
+      "children": [
+        {
+          "name": "West Frisian",
+          "forms": [
+            "faar"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Old Dutch",
+      "forms": [
+        "fadar",
+        "fader"
+      ],
+      "children": [
+        {
+          "name": "Middle Dutch",
+          "forms": [
+            "vāder"
+          ],
+          "children": [
+            {
+              "name": "Dutch",
+              "forms": [
+                "vader"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Old Saxon",
+      "forms": [
+        "fadar",
+        "fader"
+      ],
+      "children": [
+        {
+          "name": "Middle Low German",
+          "forms": [
+            "vāder"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Old High German",
+      "forms": [
+        "fater"
+      ],
+      "children": [
+        {
+          "name": "Middle High German",
+          "forms": [
+            "vater"
+          ],
+          "children": [
+            {
+              "name": "German",
+              "forms": [
+                "Vater"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "early Scandinavian",
+      "forms": [
+        "faþiR"
+      ]
+    },
+    {
+      "name": "Gothic",
+      "forms": [
+        "fadar",
+        "atta"
+      ]
+    }
+  ]
+}
