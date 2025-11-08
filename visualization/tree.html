@@ -24,27 +24,26 @@
 </head>
 <body>
 <h2>Germanic “Father” Language Evolution Tree</h2>
-<svg width="1000" height="800"></svg>
+<svg viewBox="0 0 3000 800" preserveAspectRatio="xMidYMid" style="width: 100%; height:auto;"></svg>
 
 <script>
-const width = 1000, height = 800;
 const svg = d3.select("svg")
   .append("g")
-  .attr("transform", "translate(80,0)");
+  .attr("transform", "translate(0,20)");
 
 d3.json("tree_germanic.json").then(function(data) {
   const root = d3.hierarchy(data);
-  const treeLayout = d3.tree().size([height - 100, width - 300]);
+  const treeLayout = d3.tree().size([window.innerWidth, window.innerHeight]);
   treeLayout(root);
 
-  // links
+  // links (vertical)
   svg.selectAll(".link")
     .data(root.links())
     .join("path")
     .attr("class", "link")
-    .attr("d", d3.linkHorizontal()
-      .x(d => d.y)
-      .y(d => d.x)
+    .attr("d", d3.linkVertical()
+      .x(d => d.x)
+      .y(d => d.y)
     );
 
   // nodes
@@ -52,14 +51,13 @@ d3.json("tree_germanic.json").then(function(data) {
     .data(root.descendants())
     .join("g")
     .attr("class", "node")
-    .attr("transform", d => `translate(${d.y},${d.x})`);
+    .attr("transform", d => `translate(${d.x},${d.y})`);
 
   node.append("circle").attr("r", 6);
 
   node.append("text")
-    .attr("dy", 3)
-    .attr("x", d => d.children ? -10 : 10)
-    .style("text-anchor", d => d.children ? "end" : "start")
+    .attr("dy", -10)
+    .style("text-anchor", "middle")
     .text(d => d.data.name + (d.data.forms ? " (" + d.data.forms.join(", ") + ")" : ""));
 });
 </script>
