@@ -2,64 +2,58 @@
 <meta charset="UTF-8">
 <title>Germanic "Father" Tree</title>
 <script src="https://d3js.org/d3.v7.min.js"></script>
-<style>
-  body {
-    font-family: sans-serif;
-    background: #fafafa;
-  }
-  .node circle {
-    fill: #69b3a2;
-    stroke: #333;
-    stroke-width: 1.5px;
-  }
-  .node text {
-    font-size: 12px;
-  }
-  .link {
-    fill: none;
-    stroke: #ccc;
-    stroke-width: 1.5px;
-  }
-</style>
+<link rel="stylesheet" href="tree.css">
 </head>
 <body>
 <h2>Germanic “Father” Language Evolution Tree</h2>
-<svg viewBox="0 0 3000 800" preserveAspectRatio="xMidYMid" style="width: 100%; height:auto;"></svg>
-
+<svg></svg>
 <script>
-const svg = d3.select("svg")
-  .append("g")
-  .attr("transform", "translate(0,20)");
+const svgEl = d3.select("svg");
+const g = svgEl.append("g").attr("transform", "translate(0,50)");
 
-d3.json("tree_germanic.json").then(function(data) {
-  const root = d3.hierarchy(data);
-  const treeLayout = d3.tree().size([window.innerWidth, window.innerHeight]);
-  treeLayout(root);
+function drawTree() {
+  svgEl.selectAll("*").remove(); // clear previous render
+  const g = svgEl.append("g").attr("transform", "translate(0,50)");
 
-  // links (vertical)
-  svg.selectAll(".link")
-    .data(root.links())
-    .join("path")
-    .attr("class", "link")
-    .attr("d", d3.linkVertical()
-      .x(d => d.x)
-      .y(d => d.y)
-    );
+  const width = svgEl.node().clientWidth;
+  const height = svgEl.node().clientHeight;
 
-  // nodes
-  const node = svg.selectAll(".node")
-    .data(root.descendants())
-    .join("g")
-    .attr("class", "node")
-    .attr("transform", d => `translate(${d.x},${d.y})`);
+  d3.json("tree_germanic.json").then(function(data) {
+    const root = d3.hierarchy(data);
+    const treeLayout = d3.tree().size([width, height - 100]);
+    treeLayout(root);
 
-  node.append("circle").attr("r", 6);
+    // links
+    g.selectAll(".link")
+      .data(root.links())
+      .join("path")
+      .attr("class", "link")
+      .attr("d", d3.linkVertical()
+        .x(d => d.x)
+        .y(d => d.y)
+      );
 
-  node.append("text")
-    .attr("dy", -10)
-    .style("text-anchor", "middle")
-    .text(d => d.data.name + (d.data.forms ? " (" + d.data.forms.join(", ") + ")" : ""));
-});
+    // nodes
+    const node = g.selectAll(".node")
+      .data(root.descendants())
+      .join("g")
+      .attr("class", "node")
+      .attr("transform", d => `translate(${d.x},${d.y})`);
+
+    node.append("circle").attr("r", 6);
+
+    node.append("text")
+      .attr("dy", -10)
+      .style("text-anchor", "middle")
+      .text(d => d.data.name + (d.data.forms ? " (" + d.data.forms.join(", ") + ")" : ""));
+  });
+}
+
+// draw once on load
+drawTree();
+
+// redraw on window resize
+window.addEventListener("resize", drawTree);
 </script>
 </body>
 </html>
