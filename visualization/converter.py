@@ -16,10 +16,6 @@ with FATHER_PATH.open("r", encoding="utf-8") as f:
 with HIERARCHY_PATH.open("r", encoding="utf-8") as f:
     hierarchy = json.load(f)
 
-# Build lookup tables
-# Map language -> forms (from the flat father_germanic.json list)
-forms_lookup = {entry["language"]: entry["forms"] for entry in words_data} 
-
 # Map parent -> list of children (every language included as a key)
 children = {lang: [] for lang in hierarchy}   # initialize all languages with empty list
 for lang, parent in hierarchy.items():
@@ -30,8 +26,8 @@ for lang, parent in hierarchy.items():
 def build_tree(name):
     node = {"name": name}
     # Attach forms 
-    if name in forms_lookup:
-        node["forms"] = forms_lookup[name]
+    if name in words_data:
+        node["forms"] = words_data[name]
     # Attach children if this language has descendants in the hierarchy
     if name in children:
         node["children"] = [build_tree(child) for child in children[name]]
