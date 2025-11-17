@@ -16,33 +16,21 @@ with FATHER_PATH.open("r", encoding="utf-8") as f:
 with HIERARCHY_PATH.open("r", encoding="utf-8") as f:
     hierarchy = json.load(f)
 
-# Map parent -> list of children (every language included as a key)
-children = {lang: [] for lang in hierarchy}   # initialize all languages with empty list
-for lang, parent in hierarchy.items():
-    if parent is not None:                    # if it has a parent, add it as a child
-        children[parent].append(lang)
-
 # Recursive tree builder
 def build_tree(name):
     node = {"name": name}
-    # Attach forms 
+    # Add forms if present
     if name in words_data:
         node["forms"] = words_data[name]
-    # Attach children if this language has descendants in the hierarchy
-    if name in children:
-        node["children"] = [build_tree(child) for child in children[name]]
+    node["children"] = [
+        build_tree(child) for child in hierarchy[name]
+    ]
     return node
 
-# Find root and build the tree
-root = None
-for lang, parent in hierarchy.items():
-    if parent is None:
-        root = lang
-        break
-tree = build_tree(root)
+# Use root to build the tree
+tree = build_tree("Proto-Indo-European")
 
 # Save D3-compatible tree JSON
 with OUTPUT_PATH.open("w", encoding="utf-8") as f:
     json.dump(tree, f, indent=2, ensure_ascii=False)
-
 print(f"✅ Tree successfully built and saved to {OUTPUT_PATH}")
