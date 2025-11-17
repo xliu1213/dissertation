@@ -45,6 +45,22 @@
           ]
         },
         {
+          "name": "Old Saxon",
+          "forms": [
+            "fadar",
+            "fader"
+          ],
+          "children": [
+            {
+              "name": "Middle Low German",
+              "forms": [
+                "vāder"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
           "name": "Old High German",
           "forms": [
             "fater"
@@ -73,30 +89,6 @@
             "faþiR"
           ],
           "children": []
-        },
-        {
-          "name": "Gothic",
-          "forms": [
-            "fadar",
-            "atta"
-          ],
-          "children": []
-        },
-        {
-          "name": "Old Saxon",
-          "forms": [
-            "fadar",
-            "fader"
-          ],
-          "children": [
-            {
-              "name": "Middle Low German",
-              "forms": [
-                "vāder"
-              ],
-              "children": []
-            }
-          ]
         },
         {
           "name": "Proto-Norse",
@@ -155,6 +147,14 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Gothic",
+          "forms": [
+            "fadar",
+            "atta"
+          ],
+          "children": []
         }
       ]
     }
