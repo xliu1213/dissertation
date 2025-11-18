@@ -28,7 +28,7 @@ def build_tree(name):
     return node
 
 # Use root to build the tree
-tree = build_tree("Proto-Indo-European")
+tree = build_tree("Proto-Germanic")
 
 # Save D3-compatible tree JSON
 with OUTPUT_PATH.open("w", encoding="utf-8") as f:

@@ -1,162 +1,157 @@
 {
-  "name": "Proto-Indo-European",
+  "name": "Proto-Germanic",
   "children": [
     {
-      "name": "Proto-Germanic",
+      "name": "Old Frisian",
+      "forms": [
+        "fader",
+        "feder"
+      ],
       "children": [
         {
-          "name": "Old Frisian",
+          "name": "West Frisian",
           "forms": [
-            "fader",
-            "feder"
-          ],
-          "children": [
-            {
-              "name": "West Frisian",
-              "forms": [
-                "faar"
-              ],
-              "children": []
-            }
-          ]
-        },
-        {
-          "name": "Old Dutch",
-          "forms": [
-            "fadar",
-            "fader"
-          ],
-          "children": [
-            {
-              "name": "Middle Dutch",
-              "forms": [
-                "vāder"
-              ],
-              "children": [
-                {
-                  "name": "Dutch",
-                  "forms": [
-                    "vader"
-                  ],
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Old Saxon",
-          "forms": [
-            "fadar",
-            "fader"
-          ],
-          "children": [
-            {
-              "name": "Middle Low German",
-              "forms": [
-                "vāder"
-              ],
-              "children": []
-            }
-          ]
-        },
-        {
-          "name": "Old High German",
-          "forms": [
-            "fater"
-          ],
-          "children": [
-            {
-              "name": "Middle High German",
-              "forms": [
-                "vater"
-              ],
-              "children": [
-                {
-                  "name": "German",
-                  "forms": [
-                    "Vater"
-                  ],
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "early Scandinavian",
-          "forms": [
-            "faþiR"
-          ],
-          "children": []
-        },
-        {
-          "name": "Proto-Norse",
-          "children": [
-            {
-              "name": "Old Norse",
-              "children": [
-                {
-                  "name": "Old Icelandic",
-                  "forms": [
-                    "faðir"
-                  ],
-                  "children": []
-                },
-                {
-                  "name": "Norn",
-                  "forms": [
-                    "fa",
-                    "fy",
-                    "fyrin"
-                  ],
-                  "children": []
-                },
-                {
-                  "name": "Old Swedish",
-                  "forms": [
-                    "faþir"
-                  ],
-                  "children": [
-                    {
-                      "name": "Swedish",
-                      "forms": [
-                        "fader",
-                        "far"
-                      ],
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "name": "Old Danish",
-                  "forms": [
-                    "fathær"
-                  ],
-                  "children": [
-                    {
-                      "name": "Danish",
-                      "forms": [
-                        "fader",
-                        "far"
-                      ],
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Gothic",
-          "forms": [
-            "fadar",
-            "atta"
+            "faar"
           ],
           "children": []
         }
       ]
+    },
+    {
+      "name": "Old Dutch",
+      "forms": [
+        "fadar",
+        "fader"
+      ],
+      "children": [
+        {
+          "name": "Middle Dutch",
+          "forms": [
+            "vāder"
+          ],
+          "children": [
+            {
+              "name": "Dutch",
+              "forms": [
+                "vader"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Old Saxon",
+      "forms": [
+        "fadar",
+        "fader"
+      ],
+      "children": [
+        {
+          "name": "Middle Low German",
+          "forms": [
+            "vāder"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Old High German",
+      "forms": [
+        "fater"
+      ],
+      "children": [
+        {
+          "name": "Middle High German",
+          "forms": [
+            "vater"
+          ],
+          "children": [
+            {
+              "name": "German",
+              "forms": [
+                "Vater"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "early Scandinavian",
+      "forms": [
+        "faþiR"
+      ],
+      "children": []
+    },
+    {
+      "name": "Proto-Norse",
+      "children": [
+        {
+          "name": "Old Norse",
+          "children": [
+            {
+              "name": "Old Icelandic",
+              "forms": [
+                "faðir"
+              ],
+              "children": []
+            },
+            {
+              "name": "Norn",
+              "forms": [
+                "fa",
+                "fy",
+                "fyrin"
+              ],
+              "children": []
+            },
+            {
+              "name": "Old Swedish",
+              "forms": [
+                "faþir"
+              ],
+              "children": [
+                {
+                  "name": "Swedish",
+                  "forms": [
+                    "fader",
+                    "far"
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Old Danish",
+              "forms": [
+                "fathær"
+              ],
+              "children": [
+                {
+                  "name": "Danish",
+                  "forms": [
+                    "fader",
+                    "far"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gothic",
+      "forms": [
+        "fadar",
+        "atta"
+      ],
+      "children": []
     }
   ]
 }
