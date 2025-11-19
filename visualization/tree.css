@@ -17,7 +17,7 @@ svg {
 }
 
 .node text {
-  font-size: 14px;
+  font-size: clamp(10px, 1.2vw, 16px);
 }
 
 .link {
