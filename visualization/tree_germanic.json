@@ -85,61 +85,52 @@
       "forms": [
         "faþiR"
       ],
-      "children": []
-    },
-    {
-      "name": "Proto-Norse",
       "children": [
         {
-          "name": "Old Norse",
+          "name": "Old Icelandic",
+          "forms": [
+            "faðir"
+          ],
+          "children": []
+        },
+        {
+          "name": "Norn",
+          "forms": [
+            "fa",
+            "fy",
+            "fyrin"
+          ],
+          "children": []
+        },
+        {
+          "name": "Old Swedish",
+          "forms": [
+            "faþir"
+          ],
           "children": [
             {
-              "name": "Old Icelandic",
+              "name": "Swedish",
               "forms": [
-                "faðir"
+                "fader",
+                "far"
               ],
               "children": []
-            },
+            }
+          ]
+        },
+        {
+          "name": "Old Danish",
+          "forms": [
+            "fathær"
+          ],
+          "children": [
             {
-              "name": "Norn",
+              "name": "Danish",
               "forms": [
-                "fa",
-                "fy",
-                "fyrin"
+                "fader",
+                "far"
               ],
               "children": []
-            },
-            {
-              "name": "Old Swedish",
-              "forms": [
-                "faþir"
-              ],
-              "children": [
-                {
-                  "name": "Swedish",
-                  "forms": [
-                    "fader",
-                    "far"
-                  ],
-                  "children": []
-                }
-              ]
-            },
-            {
-              "name": "Old Danish",
-              "forms": [
-                "fathær"
-              ],
-              "children": [
-                {
-                  "name": "Danish",
-                  "forms": [
-                    "fader",
-                    "far"
-                  ],
-                  "children": []
-                }
-              ]
             }
           ]
         }
