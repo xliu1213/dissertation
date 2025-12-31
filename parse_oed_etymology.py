@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 
 # Config
-INPUT_HTML = "father.html"
+INPUT_HTML = "night.html"
 OUTPUT_DIR = "output"
 Path(OUTPUT_DIR).mkdir(exist_ok=True)
 
@@ -16,6 +16,23 @@ def parse_html(file_path):
         raise ValueError("Etymology section not found in HTML.")
     return ety
 
+def trim_indo_html(indo_html: str) -> str:
+    father_marker = '<p></p>' # father-like case: extra paragraph before Notes
+    if father_marker in indo_html:
+        return indo_html.split(father_marker, 1)[0]
+    soup = BeautifulSoup(indo_html, "html.parser") # Most words: cut at Notes header using HTML structure
+    notes_h3 = soup.find(
+        "h3",
+        class_="etymology-note-header",
+        string=lambda s: s and s.strip() == "Notes"
+    )
+    if notes_h3:
+        for sib in list(notes_h3.next_siblings): # Remove Notes header and everything after it in the fragment
+            sib.extract()
+        notes_h3.extract()
+        return "".join(str(x) for x in soup.contents).strip() # Return fragment HTML without adding <html><body> wrappers
+    return indo_html
+
 # Split HTML into Germanic and Indo-European sections 
 def split_and_parse(ety):
     html = str(ety)
@@ -23,6 +40,9 @@ def split_and_parse(ety):
     if len(parts) != 2:
         raise ValueError("Could not split etymology into Germanic and Indo-European blocks.")
     germanic_html, indo_html = parts
+    # NEW: trim Indo-European block before the “probably originally…” paragraph
+    indo_html = trim_indo_html(indo_html)
+    print("indo_html:", indo_html)
     germanic_soup = BeautifulSoup(germanic_html, "html.parser")
     indo_soup = BeautifulSoup(indo_html, "html.parser")
     germanic_entries = extract_language_forms(germanic_soup)
