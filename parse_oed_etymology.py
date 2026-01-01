@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 
 # Config
-INPUT_HTML = "night.html"
+INPUT_HTML = "father.html"
 OUTPUT_DIR = "output"
 Path(OUTPUT_DIR).mkdir(exist_ok=True)
 
@@ -40,9 +40,7 @@ def split_and_parse(ety):
     if len(parts) != 2:
         raise ValueError("Could not split etymology into Germanic and Indo-European blocks.")
     germanic_html, indo_html = parts
-    # NEW: trim Indo-European block before the “probably originally…” paragraph
-    indo_html = trim_indo_html(indo_html)
-    print("indo_html:", indo_html)
+    indo_html = trim_indo_html(indo_html) # NEW: trim Indo-European block before the “probably originally…” paragraph
     germanic_soup = BeautifulSoup(germanic_html, "html.parser")
     indo_soup = BeautifulSoup(indo_html, "html.parser")
     germanic_entries = extract_language_forms(germanic_soup)
@@ -51,10 +49,14 @@ def split_and_parse(ety):
 
 # Extract language → forms mapping 
 def extract_language_forms(etymology_div):
-    result = {}  # <-- dictionary instead of list
+    result = {}
     spans = etymology_div.find_all("span", class_="language-name")
+    processed_langs = set()  # track language names we've already handled
     for span in spans:
         lang = span.get_text(strip=True)
+        if lang in processed_langs: # NEW: skip duplicate languages
+            continue
+        processed_langs.add(lang)
         forms = []
         next_tags = span.find_all_next(["span"], limit=8)
         for tag in next_tags:
@@ -62,13 +64,13 @@ def extract_language_forms(etymology_div):
                 break
             if "foreign-form" in tag.get("class", []):
                 forms.append(tag.get_text(strip=True))
-        seen = set() # Remove duplicates while preserving order
+        seen = set() # Remove duplicates while preserving order (forms)
         unique_forms = []
         for f in forms:
             if f not in seen:
                 seen.add(f)
                 unique_forms.append(f)
-        result[lang] = unique_forms  # <-- assign in dict
+        result[lang] = unique_forms
     return result
 
 # Export to JSON 
