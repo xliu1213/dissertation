@@ -3,9 +3,11 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 
 # Config
-INPUT_HTML = "father.html"
-OUTPUT_DIR = "output"
-Path(OUTPUT_DIR).mkdir(exist_ok=True)
+BASE_DIR = Path(__file__).resolve().parent        # D:\Desktop\Dissertation\code\backend
+ROOT_DIR = BASE_DIR.parent                        # D:\Desktop\Dissertation\code
+INPUT_HTML = BASE_DIR / "input" / "father.html"   # D:\Desktop\Dissertation\code\backend\input\father.html
+OUTPUT_DIR = BASE_DIR / "output"
+OUTPUT_DIR.mkdir(exist_ok=True)
 
 # Parse the HTML 
 def parse_html(file_path):
@@ -75,8 +77,8 @@ def extract_language_forms(etymology_div):
 
 # Export to JSON 
 def export_json(word, entries, filename_suffix):
-    out_path = Path(OUTPUT_DIR) / f"{word}_{filename_suffix}.json"
-    with open(out_path, "w", encoding="utf-8") as f:
+    out_path = OUTPUT_DIR / f"parser_output_{word}_{filename_suffix}.json"
+    with out_path.open("w", encoding="utf-8") as f:
         json.dump(entries, f, ensure_ascii=False, indent=2)
     print(f"✅ Exported: {out_path}")
 
@@ -84,7 +86,7 @@ def export_json(word, entries, filename_suffix):
 def main():
     ety = parse_html(INPUT_HTML)
     germanic, indo = split_and_parse(ety)
-    word = Path(INPUT_HTML).stem  # e.g. "father"
+    word = INPUT_HTML.stem  # "father" if INPUT_HTML is father.html
     export_json(word, germanic, "germanic")
 
 if __name__ == "__main__":
