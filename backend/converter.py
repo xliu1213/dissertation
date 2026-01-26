@@ -3,11 +3,13 @@ from collections import defaultdict
 from pathlib import Path
 
 # Resolve paths relative to this file, so it works no matter the CWD
-BASE_DIR = Path(__file__).resolve().parent      # .../visualization
-ROOT_DIR = BASE_DIR.parent                      # project root
-FATHER_PATH = ROOT_DIR / "output" / "father_germanic.json"
-HIERARCHY_PATH = ROOT_DIR / "languageHierarchy.json"
-OUTPUT_PATH = BASE_DIR / "tree_germanic.json"
+BASE_DIR = Path(__file__).resolve().parent  # .../code/backend
+INPUT_DIR = BASE_DIR / "output"
+FATHER_PATH = INPUT_DIR / "parser_output_father_germanic.json"
+HIERARCHY_PATH = BASE_DIR / "languageHierarchy.json"
+WORD = "father"
+BRANCH = "germanic"
+OUTPUT_PATH = INPUT_DIR / f"converter_output_{WORD}_{BRANCH}.json"
 
 # Load input data
 with FATHER_PATH.open("r", encoding="utf-8") as f:
@@ -19,8 +21,7 @@ with HIERARCHY_PATH.open("r", encoding="utf-8") as f:
 # Recursive tree builder
 def build_tree(name):
     node = {"name": name}
-    # Add forms if present
-    if name in words_data:
+    if name in words_data: # Add forms if present
         node["forms"] = words_data[name]
     node["children"] = [
         build_tree(child) for child in hierarchy[name]
