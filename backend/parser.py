@@ -88,6 +88,7 @@ def main():
     germanic, indo = split_and_parse(ety)
     word = INPUT_HTML.stem  # "father" if INPUT_HTML is father.html
     export_json(word, germanic, "germanic")
+    export_json(word, indo, "indo")
 
 if __name__ == "__main__":
     main()
