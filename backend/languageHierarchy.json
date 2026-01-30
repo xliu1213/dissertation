@@ -1,9 +1,9 @@
 {
-  "Indo-European": ["Proto-Germanic", "Sanskrit", "Old Avestan", "Ancient Greek", "classical Latin", "Oscan", "Gaulish", "Early Irish", "Armenian", "Tocharian A", "Tocharian B"],
+  "Indo-European": ["Proto-Germanic", "Sanskrit", "Old Avestan", "ancient Greek", "classical Latin", "Oscan", "Gaulish", "Early Irish", "Armenian", "Tocharian A", "Tocharian B"],
   "Sanskrit": [],
   "Old Avestan": ["Younger Avestan"],
   "Younger Avestan": [],
-  "Ancient Greek": [],
+  "ancient Greek": [],
   "classical Latin": [
     "Old French",
     "Old Occitan",

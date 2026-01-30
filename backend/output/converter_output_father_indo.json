@@ -173,7 +173,10 @@
       ]
     },
     {
-      "name": "Ancient Greek",
+      "name": "ancient Greek",
+      "forms": [
+        "πατήρ"
+      ],
       "children": []
     },
     {
