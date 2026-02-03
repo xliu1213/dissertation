@@ -1,6 +1,5 @@
 {
   "name": "Indo-European",
-  "forms": [],
   "children": [
     {
       "name": "Proto-Germanic",
@@ -211,7 +210,6 @@
         },
         {
           "name": "Old Occitan",
-          "forms": [],
           "children": [
             {
               "name": "Occitan",

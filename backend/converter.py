@@ -33,8 +33,9 @@ with HIERARCHY_PATH.open("r", encoding="utf-8") as f:
 # Recursive tree builder
 def build_tree(name):
     node = {"name": name}
-    if name in words_data: # Add forms if present
-        node["forms"] = words_data[name]
+    forms = words_data.get(name)
+    if forms:  # only add if non-empty
+        node["forms"] = forms
     node["children"] = [
         build_tree(child) for child in hierarchy[name]
     ]
