@@ -2,11 +2,12 @@ body {
   font-family: sans-serif;
   background: #fafafa;
   margin: 20;
+  overflow-x: auto;
 }
 
 svg {
-  width: 100%;
-  height: 90%;
+  width: 2500px;
+  height: 800px;
   border: 1px solid #999; 
 }
 

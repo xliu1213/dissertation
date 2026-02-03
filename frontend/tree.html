@@ -32,7 +32,9 @@ function drawTree() {
   document.getElementById("title").textContent = dataset.title; // update title
   d3.json(dataset.file).then(function(data) {
     const root = d3.hierarchy(data);
-    const treeLayout = d3.tree().size([width, height - 100]).separation((a, b) => a.parent === b.parent ? 3 : 4);
+    const treeLayout = d3.tree()
+      .size([width, height - 100])
+      .separation((a, b) => a.parent === b.parent ? 4 : 6);
     treeLayout(root);
     g.selectAll(".link") // links
       .data(root.links())
