@@ -5,100 +5,120 @@
 <link rel="stylesheet" href="tree.css">
 </head>
 <body>
-<button id="toggleTree">Switch to Indo-European Tree</button>
-<h2 id="title">Germanic "Father" Language Evolution Tree</h2>
+<button id="btnGermanic">Germanic</button>
+<button id="btnIndoStatic">Indo-European Overview</button>
+<button id="btnIndoExpand">Indo-European Explore</button>
+<h2 id="title"></h2>
 <svg></svg>
 <script>
 const svgEl = d3.select("svg");
-let currentTree = "germanic"; // Track which tree is currently shown
-const DATASETS = {
+const MODES = {
   germanic: {
     file: "../backend/output/converter_output_father_germanic.json",
-    title: 'Germanic "Father" Language Evolution Tree'
+    title: 'Germanic "Father" Language Evolution Tree',
+    expandable: false
   },
-  indo: {
+  indoStatic: {
     file: "../backend/output/converter_output_father_indo.json",
-    title: 'Indo-European "Father" Language Evolution Tree'
+    title: 'Indo-European "Father" Language Evolution Tree (Overview)',
+    expandable: false
+  },
+  indoExpand: {
+    file: "../backend/output/converter_output_father_indo.json",
+    title: 'Indo-European "Father" Language Evolution Tree (Explore)',
+    expandable: true
   }
 };
 
+let currentMode = "germanic";
+
 function drawTree() {
   svgEl.selectAll("*").remove(); // clear previous render
-  const g = svgEl.append("g").attr("transform", "translate(0,50)");
+  const g = svgEl.append("g").attr("transform", "translate(0,50)"); 
   const width = svgEl.node().clientWidth;
   const height = svgEl.node().clientHeight;
 
-  const dataset = DATASETS[currentTree];
-  document.getElementById("title").textContent = dataset.title; // update title
-  d3.json(dataset.file).then(function(data) {
+  const mode = MODES[currentMode];
+  document.getElementById("title").textContent = mode.title;
+  d3.json(mode.file).then(function(data) { 
     const root = d3.hierarchy(data);
+    if (mode.expandable) { // Collapse everything except root for expandable mode
+      root.children.forEach(collapse);
+    }
     const treeLayout = d3.tree()
       .size([width, height - 100])
-      .separation((a, b) => a.parent === b.parent ? 4 : 6);
-    treeLayout(root);
-    g.selectAll(".link") // links
-      .data(root.links())
-      .join("path")
-      .attr("class", "link")
-      .attr("d", d3.linkVertical()
-        .x(d => d.x)
-        .y(d => d.y)
-      );
-    const node = g.selectAll(".node") // nodes
-      .data(root.descendants())
-      .join("g")
-      .attr("class", "node")
-      .attr("transform", d => `translate(${d.x},${d.y})`);
-    node.append("circle").attr("r", 6);
-    const maxLineWidth = 120; // text wrapping
-    const labelGroup = node.append("g") // create a label group shifted upward above circle
-      .attr("transform", "translate(0, -25)");
-    labelGroup.append("text")
-      .style("text-anchor", "middle")
-      .each(function(d) {
-        const fullText =
-          d.data.name +
-          (d.data.forms ? " (" + d.data.forms.join(", ") + ")" : "");
-        const words = fullText.split(" ");
-        const lineHeight = 14;
-        let line = [];
-        let lineNumber = 0;
-        const textEl = d3.select(this);
-        textEl.text(null); // clear text before adding tspan children
-        words.forEach(word => {
-          line.push(word);
-          const testLine = line.join(" ");
-          const tspan = textEl.append("tspan").text(testLine); // temporary measure width using a tspan
-          const width = tspan.node().getComputedTextLength();
-          tspan.remove();
-          if (width > maxLineWidth) { // start a new line
-            line.pop(); 
-            textEl.append("tspan")
-              .attr("x", 0)
-              .attr("dy", lineNumber === 0 ? "0" : lineHeight)
-              .text(line.join(" "));
-            line = [word];
-            lineNumber++;
-          }
+      .separation((a, b) => a.parent === b.parent ? 4 : 6); 
+    update(root); 
+    function update(source) { 
+      g.selectAll("*").remove(); 
+      treeLayout(root);
+      g.selectAll(".link") // links
+        .data(root.links())
+        .join("path")
+        .attr("class", "link")
+        .attr("d", d3.linkVertical()
+          .x(d => d.x)
+          .y(d => d.y)
+        );
+      const node = g.selectAll(".node") // nodes
+        .data(root.descendants())
+        .join("g")
+        .attr("class", "node")
+        .attr("transform", d => `translate(${d.x},${d.y})`)
+        .on("click", (event, d) => { 
+          if (!mode.expandable) return;
+          toggle(d);
+          update(d);
         });
-        textEl.append("tspan") // final line
-          .attr("x", 0)
-          .attr("dy", lineNumber === 0 ? "0" : lineHeight)
-          .text(line.join(" "));
-      });
+      node.append("circle")
+        .attr("r", 6)
+      node.append("text") 
+        .attr("dy", -10)
+        .style("text-anchor", "middle")
+        .text(d => {
+          const arrow =
+            mode.expandable && (d.children || d._children)
+              ? (d.children ? "▼ " : "▶ ")
+              : "";
+          const forms = d.data.forms ? ` (${d.data.forms.join(", ")})` : "";
+          return arrow + d.data.name + forms;
+        });
+    }
+
+    function collapse(d) {
+      if (d.children) {
+        d._children = d.children;
+        d._children.forEach(collapse);
+        d.children = null;
+      }
+    }
+
+    function toggle(d) { 
+      if (d.children) {
+        d._children = d.children;
+        d.children = null;
+      } else if (d._children) {
+        d.children = d._children;
+        d._children = null;
+      }
+    }
   });
 }
 
-drawTree(currentTree); // initial render
-document.getElementById("toggleTree").addEventListener("click", () => { // toggle button logic
-  currentTree = currentTree === "germanic" ? "indo" : "germanic";
-  document.getElementById("toggleTree").textContent =
-    currentTree === "germanic"
-      ? "Switch to Indo-European Tree"
-      : "Switch to Germanic Tree";
-  drawTree(currentTree);
-});
-window.addEventListener("resize", () => drawTree(currentTree)); // redraw on resize
+document.getElementById("btnGermanic").onclick = () => { // Button wiring
+  currentMode = "germanic";
+  drawTree();
+};
+document.getElementById("btnIndoStatic").onclick = () => {
+  currentMode = "indoStatic";
+  drawTree();
+};
+document.getElementById("btnIndoExpand").onclick = () => {
+  currentMode = "indoExpand";
+  drawTree();
+};
+drawTree();
+window.addEventListener("resize", drawTree);
 </script>
 </body>
 </html>
