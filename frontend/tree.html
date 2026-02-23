@@ -104,7 +104,12 @@ function drawTree() {
         .attr("r", 6)
       node.append("text")
         .style("text-anchor", "middle")
-        .attr("dy", -10)
+        .attr(
+          "transform",
+          isExplore
+            ? "translate(0,-10)"   // horizontal Explore view
+            : "translate(0,-22)"   // vertical Germanic + Overview
+        )
         .each(function(d) {
           const text = d3.select(this);
           const arrow =
