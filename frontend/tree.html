@@ -50,9 +50,14 @@ function drawTree() {
     if (mode.expandable) { // Collapse everything except root for expandable mode
       root.children.forEach(collapse);
     }
-    const treeLayout = d3.tree()
-      .size([width, height - 100])
-      .separation((a, b) => a.parent === b.parent ? 4 : 6); 
+
+  const isExplore = (currentMode === "indoExpand");
+
+  const treeLayout = d3.tree()
+    // For horizontal: x = vertical space, y = horizontal space
+    .size(isExplore ? [height - 100, width] : [width, height - 100])
+    .separation((a, b) => a.parent === b.parent ? 4 : 6);
+
     update(root); 
     function update(source) { 
       g.selectAll("*").remove(); 
@@ -61,15 +66,25 @@ function drawTree() {
         .data(root.links())
         .join("path")
         .attr("class", "link")
-        .attr("d", d3.linkVertical()
-          .x(d => d.x)
-          .y(d => d.y)
+        .attr("d",
+          isExplore
+            ? d3.linkHorizontal()
+                .x(d => d.y)
+                .y(d => d.x)
+            : d3.linkVertical()
+                .x(d => d.x)
+                .y(d => d.y)
         );
+
       const node = g.selectAll(".node") // nodes
         .data(root.descendants())
         .join("g")
         .attr("class", "node")
-        .attr("transform", d => `translate(${d.x},${d.y})`)
+        .attr("transform", d =>
+          isExplore
+            ? `translate(${d.y},${d.x})`
+            : `translate(${d.x},${d.y})`
+        )
         .on("click", (event, d) => { 
           if (!mode.expandable) return;
           toggle(d);
