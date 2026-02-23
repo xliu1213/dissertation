@@ -102,16 +102,33 @@ function drawTree() {
         });
       node.append("circle")
         .attr("r", 6)
-      node.append("text") 
-        .attr("dy", -10)
+      node.append("text")
         .style("text-anchor", "middle")
-        .text(d => {
+        .attr("dy", -10)
+        .each(function(d) {
+          const text = d3.select(this);
           const arrow =
             mode.expandable && (d.children || d._children)
               ? (d.children ? "▼ " : "▶ ")
               : "";
-          const forms = d.data.forms ? ` (${d.data.forms.join(", ")})` : "";
-          return arrow + d.data.name + forms;
+          const nameLine = arrow + d.data.name;
+          text.append("tspan") // First line: language name
+            .attr("x", 0)
+            .attr("dy", 0)
+            .text(nameLine);
+          if (!isExplore && d.data.forms) { // Second line: word forms (ONLY for non-explore modes)
+            text.append("tspan")
+              .attr("x", 0)
+              .attr("dy", 14)   // vertical spacing between lines
+              .style("font-size", "0.9em")
+              .style("fill", "#555")
+              .text("(" + d.data.forms.join(", ") + ")");
+          }
+          if (isExplore && d.data.forms) { // For explore mode, keep everything inline
+            text.append("tspan")
+              .attr("dx", 4)
+              .text(" (" + d.data.forms.join(", ") + ")");
+          }
         });
     }
 
