@@ -41,7 +41,13 @@ function drawTree() {
   svgEl.selectAll("*").remove(); // clear previous render
   const mode = MODES[currentMode];
   setBodyModeClass(currentMode);
-  const g = svgEl.append("g").attr("transform", "translate(0,50)"); 
+  const isExplore = (currentMode === "indoExpand");
+  const g = svgEl.append("g").attr(
+    "transform",
+    isExplore
+      ? "translate(60,60)"   // add left margin for horizontal mode
+      : "translate(0,50)"
+  );
   const width = svgEl.node().clientWidth;
   const height = svgEl.node().clientHeight;
   document.getElementById("title").textContent = mode.title;
@@ -55,7 +61,11 @@ function drawTree() {
 
   const treeLayout = d3.tree()
     // For horizontal: x = vertical space, y = horizontal space
-    .size(isExplore ? [height - 100, width] : [width, height - 100])
+    .size(
+      isExplore
+        ? [height - 200, width - 150]  // subtract left + right margin
+        : [width, height - 100]
+    )
     .separation((a, b) => a.parent === b.parent ? 4 : 6);
 
     update(root); 
