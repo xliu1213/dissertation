@@ -16,11 +16,15 @@
     "Early Irish",
     "Armenian",
     "Tocharian A",
-    "Tocharian B"
+    "Tocharian B",
+    "Albanian",
+    "Old Welsh"
   ],
+  "Albanian": [],
   "Hittite": [],
   "Lithuanian": [],
-  "Old Church Slavonic": [],
+  "Old Church Slavonic": ["Russian"],
+  "Russian": [],
   "Umbrian": [],
   "Old Prussian": [],
   "Latvian": [],
@@ -34,8 +38,10 @@
     "Catalan",
     "Spanish",
     "Portuguese",
-    "Italian"
+    "Italian",
+    "Romanian"
   ],
+  "Romanian": [],
   "Old French": ["Middle French"],
   "Middle French": ["French"],
   "French": [],
@@ -47,7 +53,8 @@
   "Italian": [],
   "Oscan": [],
   "Gaulish": [],
-  "Early Irish": [],
+  "Early Irish": ["Irish"],
+  "Irish": [],
   "Armenian": [],
   "Tocharian A": [],
   "Tocharian B": [],
@@ -71,5 +78,7 @@
   "Old Swedish": ["Swedish"],
   "Swedish": [],
   "Old Danish": ["Danish"],
-  "Danish": []
+  "Danish": [],
+  "Old Welsh": ["Welsh"],
+  "Welsh": []
 }

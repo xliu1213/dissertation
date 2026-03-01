@@ -178,6 +178,13 @@
             "noite"
           ],
           "children": []
+        },
+        {
+          "name": "Romanian",
+          "forms": [
+            "noapte"
+          ],
+          "children": []
         }
       ]
     },
@@ -194,19 +201,57 @@
       "forms": [
         "nocht"
       ],
-      "children": []
+      "children": [
+        {
+          "name": "Irish",
+          "forms": [
+            "anocht"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Old Welsh",
+      "forms": [
+        "henoid"
+      ],
+      "children": [
+        {
+          "name": "Welsh",
+          "forms": [
+            "heno"
+          ],
+          "children": []
+        }
+      ]
     },
     {
       "name": "Old Church Slavonic",
       "forms": [
         "noshtĭ"
       ],
-      "children": []
+      "children": [
+        {
+          "name": "Russian",
+          "forms": [
+            "noč′"
+          ],
+          "children": []
+        }
+      ]
     },
     {
       "name": "Lithuanian",
       "forms": [
         "naktis"
+      ],
+      "children": []
+    },
+    {
+      "name": "Albanian",
+      "forms": [
+        "natë"
       ],
       "children": []
     }
