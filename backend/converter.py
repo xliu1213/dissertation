@@ -22,16 +22,25 @@ def merge_entries(target, source):
                 if f not in target[lang]:
                     target[lang].append(f)
                     
-# Load input data
-words_data = {}
 # Load Germanic forms
 with GERMANIC_PATH.open("r", encoding="utf-8") as f:
     germanic_data = json.load(f)
-    merge_entries(words_data, germanic_data)
 
 # Load Indo-European forms
 with INDO_PATH.open("r", encoding="utf-8") as f:
     indo_data = json.load(f)
+
+# Handle EMPTY Germanic case
+if germanic_data == {}:
+    output_path = INPUT_DIR / f"converter_output_{WORD}_germanic.json"
+    with output_path.open("w", encoding="utf-8") as f:
+        json.dump({}, f, indent=2, ensure_ascii=False)
+    print(f"✅ Germanic input empty — blank output written to {output_path}")
+
+words_data = {}
+if germanic_data:
+    merge_entries(words_data, germanic_data)
+if indo_data:
     merge_entries(words_data, indo_data)
 
 # Load hierarchy
@@ -63,6 +72,8 @@ def build_tree(name):
     return node
 
 for branch, root in EXPORT_BRANCHES.items():
+    if branch == "germanic" and germanic_data == {}: # Skip germanic if already handled as empty
+        continue
     tree = build_tree(root)
     output_path = INPUT_DIR / f"converter_output_{WORD}_{branch}.json"
     with output_path.open("w", encoding="utf-8") as f:
