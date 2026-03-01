@@ -30,14 +30,24 @@ with INDO_PATH.open("r", encoding="utf-8") as f:
 with HIERARCHY_PATH.open("r", encoding="utf-8") as f:
     hierarchy = json.load(f)
 
-# Recursive tree builder
+allowed = set(words_data.keys())
+def find_visible_children(name):
+    visible = []
+    for child in hierarchy.get(name, []):
+        if child in allowed:
+            visible.append(child)
+        else:
+            visible.extend(find_visible_children(child)) # skip this node but keep searching below it
+    return visible
+
 def build_tree(name):
     node = {"name": name}
     forms = words_data.get(name)
-    if forms:  # only add if non-empty
+    if forms:
         node["forms"] = forms
     node["children"] = [
-        build_tree(child) for child in hierarchy[name]
+        build_tree(child)
+        for child in find_visible_children(name)
     ]
     return node
 

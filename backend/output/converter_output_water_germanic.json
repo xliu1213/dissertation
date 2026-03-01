@@ -75,49 +75,40 @@
       ]
     },
     {
-      "name": "early Scandinavian",
+      "name": "Old Icelandic",
+      "forms": [
+        "vatr"
+      ],
+      "children": []
+    },
+    {
+      "name": "Old Swedish",
+      "forms": [
+        "vatn"
+      ],
       "children": [
         {
-          "name": "Old Icelandic",
+          "name": "Swedish",
           "forms": [
-            "vatr"
+            "vatten"
           ],
           "children": []
-        },
+        }
+      ]
+    },
+    {
+      "name": "Old Danish",
+      "forms": [
+        "wadn",
+        "wand"
+      ],
+      "children": [
         {
-          "name": "Norn",
+          "name": "Danish",
+          "forms": [
+            "vand"
+          ],
           "children": []
-        },
-        {
-          "name": "Old Swedish",
-          "forms": [
-            "vatn"
-          ],
-          "children": [
-            {
-              "name": "Swedish",
-              "forms": [
-                "vatten"
-              ],
-              "children": []
-            }
-          ]
-        },
-        {
-          "name": "Old Danish",
-          "forms": [
-            "wadn",
-            "wand"
-          ],
-          "children": [
-            {
-              "name": "Danish",
-              "forms": [
-                "vand"
-              ],
-              "children": []
-            }
-          ]
         }
       ]
     },
