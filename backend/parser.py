@@ -53,12 +53,8 @@ def split_and_parse(ety):
 def extract_language_forms(etymology_div):
     result = {}
     spans = etymology_div.find_all("span", class_="language-name")
-    processed_langs = set()  # track language names we've already handled
     for span in spans:
         lang = span.get_text(strip=True)
-        if lang in processed_langs: # NEW: skip duplicate languages
-            continue
-        processed_langs.add(lang)
         forms = []
         next_tags = span.find_all_next(["span"], limit=8)
         for tag in next_tags:
@@ -66,13 +62,11 @@ def extract_language_forms(etymology_div):
                 break
             if "foreign-form" in tag.get("class", []):
                 forms.append(tag.get_text(strip=True))
-        seen = set() # Remove duplicates while preserving order (forms)
-        unique_forms = []
-        for f in forms:
-            if f not in seen:
-                seen.add(f)
-                unique_forms.append(f)
-        result[lang] = unique_forms
+        if lang not in result: # Ensure language exists
+            result[lang] = []
+        for f in forms: # Append while preserving uniqueness
+            if f not in result[lang]:
+                result[lang].append(f)
     return result
 
 # Export to JSON 
