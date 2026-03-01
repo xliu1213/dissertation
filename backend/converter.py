@@ -4,8 +4,8 @@ from pathlib import Path
 # Resolve paths relative to this file, so it works no matter the CWD
 BASE_DIR = Path(__file__).resolve().parent  
 INPUT_DIR = BASE_DIR / "output"
-GERMANIC_PATH = INPUT_DIR / "parser_output_night_germanic.json"
-INDO_PATH = INPUT_DIR / "parser_output_night_indo.json"
+GERMANIC_PATH = INPUT_DIR / "parser_output_king_germanic.json"
+INDO_PATH = INPUT_DIR / "parser_output_king_indo.json"
 WORD = GERMANIC_PATH.stem.replace("parser_output_", "").replace("_germanic", "") # Infer WORD from parser input
 HIERARCHY_PATH = BASE_DIR / "languageHierarchy.json"
 EXPORT_BRANCHES = {
@@ -13,18 +13,26 @@ EXPORT_BRANCHES = {
     "indo": "Indo-European"
 }
 
+def merge_entries(target, source):
+    for lang, forms in source.items():
+        if lang not in target:
+            target[lang] = forms.copy()
+        else:
+            for f in forms:
+                if f not in target[lang]:
+                    target[lang].append(f)
+                    
 # Load input data
 words_data = {}
-
 # Load Germanic forms
 with GERMANIC_PATH.open("r", encoding="utf-8") as f:
     germanic_data = json.load(f)
-    words_data.update(germanic_data)
+    merge_entries(words_data, germanic_data)
 
 # Load Indo-European forms
 with INDO_PATH.open("r", encoding="utf-8") as f:
     indo_data = json.load(f)
-    words_data.update(indo_data)
+    merge_entries(words_data, indo_data)
 
 # Load hierarchy
 with HIERARCHY_PATH.open("r", encoding="utf-8") as f:
@@ -32,7 +40,6 @@ with HIERARCHY_PATH.open("r", encoding="utf-8") as f:
 
 appearance_order = list(words_data.keys())
 order_index = {lang: i for i, lang in enumerate(appearance_order)}
-
 allowed = set(words_data.keys())
 def find_visible_children(name):
     visible = []
@@ -41,8 +48,7 @@ def find_visible_children(name):
             visible.append(child)
         else:
             visible.extend(find_visible_children(child))
-    # ⭐ Preserve OED appearance order
-    visible.sort(key=lambda x: order_index.get(x, float("inf")))
+    visible.sort(key=lambda x: order_index.get(x, float("inf"))) # Preserve OED appearance order
     return visible
 
 def build_tree(name):

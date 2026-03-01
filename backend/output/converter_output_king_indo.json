@@ -1,0 +1,157 @@
+{
+  "name": "Indo-European",
+  "children": [
+    {
+      "name": "Old Frisian",
+      "forms": [
+        "kening",
+        "koning",
+        "kenig"
+      ],
+      "children": [
+        {
+          "name": "West Frisian",
+          "forms": [
+            "kening"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Old Dutch",
+      "forms": [
+        "cuning",
+        "cunig"
+      ],
+      "children": [
+        {
+          "name": "Middle Dutch",
+          "forms": [
+            "coninc",
+            "conic"
+          ],
+          "children": [
+            {
+              "name": "Dutch",
+              "forms": [
+                "koning"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Old Saxon",
+      "forms": [
+        "kuning",
+        "kunig"
+      ],
+      "children": [
+        {
+          "name": "Middle Low German",
+          "forms": [
+            "kȫninc",
+            "kȫnich"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Old High German",
+      "forms": [
+        "kuning",
+        "kunig",
+        "chunch"
+      ],
+      "children": [
+        {
+          "name": "Middle High German",
+          "forms": [
+            "küninc",
+            "künic",
+            "künc"
+          ],
+          "children": [
+            {
+              "name": "German",
+              "forms": [
+                "König",
+                "Künig",
+                "Köng",
+                "Küng"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "early Scandinavian",
+      "forms": [
+        "kunungR"
+      ],
+      "children": [
+        {
+          "name": "Old Icelandic",
+          "forms": [
+            "konungr",
+            "kóngr",
+            "konr"
+          ],
+          "children": [
+            {
+              "name": "Icelandic",
+              "forms": [
+                "konungur",
+                "kóngur"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old Swedish",
+          "forms": [
+            "konunger",
+            "konger"
+          ],
+          "children": [
+            {
+              "name": "Swedish",
+              "forms": [
+                "konung",
+                "konug",
+                "kung"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old Danish",
+          "forms": [
+            "koning",
+            "konung",
+            "konug",
+            "kong"
+          ],
+          "children": [
+            {
+              "name": "Danish",
+              "forms": [
+                "konge",
+                "konning"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
