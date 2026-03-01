@@ -46,5 +46,7 @@
   "Old Icelandic": ["Icelandic"],
   "Old Swedish": ["Swedish"],
   "Old Danish": ["Danish"],
-  "Old Welsh": ["Welsh"]
+  "Old Welsh": ["Welsh"],
+  "ancient Greek": ["Hellenistic Greek"],
+  "Hellenistic Greek": ["Byzantine Greek"]
 }
