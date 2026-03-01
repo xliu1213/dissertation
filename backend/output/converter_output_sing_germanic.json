@@ -1,0 +1,83 @@
+{
+  "name": "Proto-Germanic",
+  "children": [
+    {
+      "name": "Old Frisian",
+      "forms": [
+        "sionga"
+      ],
+      "children": [
+        {
+          "name": "West Frisian",
+          "forms": [
+            "sjonge",
+            "soenge"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Middle Dutch",
+      "forms": [
+        "singen"
+      ],
+      "children": [
+        {
+          "name": "Dutch",
+          "forms": [
+            "zingen"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Old Saxon",
+      "children": []
+    },
+    {
+      "name": "Old High German",
+      "forms": [
+        "singan"
+      ],
+      "children": [
+        {
+          "name": "German",
+          "forms": [
+            "singen"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Icelandic",
+      "children": []
+    },
+    {
+      "name": "Swedish",
+      "forms": [
+        "sjunga"
+      ],
+      "children": []
+    },
+    {
+      "name": "Danish",
+      "forms": [
+        "synge"
+      ],
+      "children": []
+    },
+    {
+      "name": "Gothic",
+      "forms": [
+        "siggwan",
+        "singwan",
+        "Sung",
+        "sang"
+      ],
+      "children": []
+    }
+  ]
+}

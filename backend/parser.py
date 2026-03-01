@@ -5,7 +5,7 @@ from pathlib import Path
 # Config
 BASE_DIR = Path(__file__).resolve().parent        # D:\Desktop\Dissertation\code\backend
 ROOT_DIR = BASE_DIR.parent                        # D:\Desktop\Dissertation\code
-INPUT_HTML = BASE_DIR / "input" / "baptize.html"   # D:\Desktop\Dissertation\code\backend\input\father.html
+INPUT_HTML = BASE_DIR / "input" / "sing.html"   # D:\Desktop\Dissertation\code\backend\input\father.html
 OUTPUT_DIR = BASE_DIR / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
@@ -39,8 +39,12 @@ def trim_indo_html(indo_html: str) -> str:
 def split_and_parse(ety):
     html = str(ety)
     parts = html.split('<span class="etymology-arrow">&lt;</span>', 1)
-    if len(parts) != 2:
-        raise ValueError("Could not split etymology into Germanic and Indo-European blocks.")
+    if len(parts) != 2: # Case where we cannot split → treat everything as Germanic
+        print("⚠️ Could not split etymology — treating as Germanic only")
+        germanic_soup = BeautifulSoup(html, "html.parser")
+        germanic_entries = extract_language_forms(germanic_soup)
+        indo_entries = {}   # <-- REQUIRED CHANGE
+        return germanic_entries, indo_entries
     germanic_html, indo_html = parts
     indo_html = trim_indo_html(indo_html) # NEW: trim Indo-European block before the “probably originally…” paragraph
     germanic_soup = BeautifulSoup(germanic_html, "html.parser")
