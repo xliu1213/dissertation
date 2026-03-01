@@ -115,20 +115,6 @@
       "children": []
     },
     {
-      "name": "Lithuanian",
-      "forms": [
-        "naktis"
-      ],
-      "children": []
-    },
-    {
-      "name": "Old Church Slavonic",
-      "forms": [
-        "noshtĭ"
-      ],
-      "children": []
-    },
-    {
       "name": "Sanskrit",
       "forms": [
         "nak",
@@ -173,6 +159,13 @@
           ]
         },
         {
+          "name": "Italian",
+          "forms": [
+            "notte"
+          ],
+          "children": []
+        },
+        {
           "name": "Spanish",
           "forms": [
             "noche"
@@ -183,13 +176,6 @@
           "name": "Portuguese",
           "forms": [
             "noite"
-          ],
-          "children": []
-        },
-        {
-          "name": "Italian",
-          "forms": [
-            "notte"
           ],
           "children": []
         }
@@ -207,6 +193,20 @@
       "name": "Early Irish",
       "forms": [
         "nocht"
+      ],
+      "children": []
+    },
+    {
+      "name": "Old Church Slavonic",
+      "forms": [
+        "noshtĭ"
+      ],
+      "children": []
+    },
+    {
+      "name": "Lithuanian",
+      "forms": [
+        "naktis"
       ],
       "children": []
     }

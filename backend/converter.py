@@ -30,6 +30,9 @@ with INDO_PATH.open("r", encoding="utf-8") as f:
 with HIERARCHY_PATH.open("r", encoding="utf-8") as f:
     hierarchy = json.load(f)
 
+appearance_order = list(words_data.keys())
+order_index = {lang: i for i, lang in enumerate(appearance_order)}
+
 allowed = set(words_data.keys())
 def find_visible_children(name):
     visible = []
@@ -37,7 +40,9 @@ def find_visible_children(name):
         if child in allowed:
             visible.append(child)
         else:
-            visible.extend(find_visible_children(child)) # skip this node but keep searching below it
+            visible.extend(find_visible_children(child))
+    # ⭐ Preserve OED appearance order
+    visible.sort(key=lambda x: order_index.get(x, float("inf")))
     return visible
 
 def build_tree(name):
