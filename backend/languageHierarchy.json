@@ -6,9 +6,9 @@
     "Old Church Slavonic",
     "Sanskrit",
     "Old Avestan",
-    "ancient Greek",
+    "Greek",
     "Umbrian",
-    "classical Latin",
+    "Latin",
     "Old Prussian",
     "Latvian",
     "Oscan",
@@ -20,6 +20,8 @@
     "Albanian",
     "Old Welsh"
   ],
+  "Greek": ["ancient Greek"],
+  "Latin": ["classical Latin"],
   "Old Church Slavonic": ["Russian"],
   "Old Avestan": ["Younger Avestan"],
   "classical Latin": [

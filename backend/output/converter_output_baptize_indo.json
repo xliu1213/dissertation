@@ -1,0 +1,29 @@
+{
+  "name": "Indo-European",
+  "children": [
+    {
+      "name": "Latin",
+      "forms": [
+        "baptīzāre"
+      ],
+      "children": [
+        {
+          "name": "French",
+          "forms": [
+            "baptiser",
+            "baptizer"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Greek",
+      "forms": [
+        "βαπτίζειν",
+        "βάπτειν"
+      ],
+      "children": []
+    }
+  ]
+}
