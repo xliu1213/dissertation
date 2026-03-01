@@ -126,6 +126,28 @@
       "children": []
     },
     {
+      "name": "Hittite",
+      "forms": [
+        "u̯iten-",
+        "u̯ātar"
+      ],
+      "children": []
+    },
+    {
+      "name": "Lithuanian",
+      "forms": [
+        "vanduo"
+      ],
+      "children": []
+    },
+    {
+      "name": "Old Church Slavonic",
+      "forms": [
+        "voda"
+      ],
+      "children": []
+    },
+    {
       "name": "Sanskrit",
       "forms": [
         "udan"
@@ -141,9 +163,32 @@
       "children": []
     },
     {
+      "name": "Umbrian",
+      "forms": [
+        "un-",
+        "utur"
+      ],
+      "children": []
+    },
+    {
       "name": "classical Latin",
       "forms": [
         "unda"
+      ],
+      "children": []
+    },
+    {
+      "name": "Old Prussian",
+      "forms": [
+        "unds",
+        "wundan"
+      ],
+      "children": []
+    },
+    {
+      "name": "Latvian",
+      "forms": [
+        "ūdens"
       ],
       "children": []
     },
