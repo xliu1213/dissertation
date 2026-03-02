@@ -1,0 +1,264 @@
+{
+  "name": "Indo-European",
+  "children": [
+    {
+      "name": "Sanskrit",
+      "forms": [
+        "nak",
+        "nakt-"
+      ],
+      "children": []
+    },
+    {
+      "name": "ancient Greek",
+      "forms": [
+        "νυκτ-",
+        "νύξ"
+      ],
+      "children": []
+    },
+    {
+      "name": "classical Latin",
+      "forms": [
+        "noct-",
+        "nox"
+      ],
+      "children": [
+        {
+          "name": "Old French",
+          "forms": [
+            "noit",
+            "nuit"
+          ],
+          "children": [
+            {
+              "name": "Middle French",
+              "children": [
+                {
+                  "name": "French",
+                  "forms": [
+                    "nuit"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Italian",
+          "forms": [
+            "notte"
+          ],
+          "children": []
+        },
+        {
+          "name": "Spanish",
+          "forms": [
+            "noche"
+          ],
+          "children": []
+        },
+        {
+          "name": "Portuguese",
+          "forms": [
+            "noite"
+          ],
+          "children": []
+        },
+        {
+          "name": "Romanian",
+          "forms": [
+            "noapte"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Gaulish",
+      "forms": [
+        "noct-",
+        "decamnoctiacis"
+      ],
+      "children": []
+    },
+    {
+      "name": "Early Irish",
+      "forms": [
+        "nocht"
+      ],
+      "children": [
+        {
+          "name": "Irish",
+          "forms": [
+            "anocht"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Old Welsh",
+      "forms": [
+        "henoid"
+      ],
+      "children": [
+        {
+          "name": "Welsh",
+          "forms": [
+            "heno"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Old Church Slavonic",
+      "forms": [
+        "noshtĭ"
+      ],
+      "children": [
+        {
+          "name": "Russian",
+          "forms": [
+            "noč′"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Lithuanian",
+      "forms": [
+        "naktis"
+      ],
+      "children": []
+    },
+    {
+      "name": "Albanian",
+      "forms": [
+        "natë"
+      ],
+      "children": []
+    },
+    {
+      "name": "Proto-Germanic",
+      "children": [
+        {
+          "name": "Old Frisian",
+          "forms": [
+            "nacht"
+          ],
+          "children": [
+            {
+              "name": "West Frisian",
+              "forms": [
+                "nacht"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Middle Dutch",
+          "forms": [
+            "nacht"
+          ],
+          "children": [
+            {
+              "name": "Dutch",
+              "forms": [
+                "nacht"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old Saxon",
+          "forms": [
+            "naht"
+          ],
+          "children": [
+            {
+              "name": "Middle Low German",
+              "forms": [
+                "nacht"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old High German",
+          "forms": [
+            "naht"
+          ],
+          "children": [
+            {
+              "name": "Middle High German",
+              "forms": [
+                "naht"
+              ],
+              "children": [
+                {
+                  "name": "German",
+                  "forms": [
+                    "Nacht"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Old Icelandic",
+          "forms": [
+            "nátt",
+            "nótt"
+          ],
+          "children": [
+            {
+              "name": "Icelandic",
+              "forms": [
+                "nótt"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old Swedish",
+          "forms": [
+            "nat"
+          ],
+          "children": [
+            {
+              "name": "Swedish",
+              "forms": [
+                "natt"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Danish",
+          "forms": [
+            "nat"
+          ],
+          "children": []
+        },
+        {
+          "name": "Gothic",
+          "forms": [
+            "nahts"
+          ],
+          "children": []
+        }
+      ]
+    }
+  ]
+}

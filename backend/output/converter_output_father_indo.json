@@ -1,0 +1,297 @@
+{
+  "name": "Indo-European",
+  "children": [
+    {
+      "name": "Sanskrit",
+      "forms": [
+        "pitṛ"
+      ],
+      "children": []
+    },
+    {
+      "name": "Old Avestan",
+      "forms": [
+        "ptar"
+      ],
+      "children": [
+        {
+          "name": "Younger Avestan",
+          "forms": [
+            "pitar"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "ancient Greek",
+      "forms": [
+        "πατήρ"
+      ],
+      "children": []
+    },
+    {
+      "name": "classical Latin",
+      "forms": [
+        "pater"
+      ],
+      "children": [
+        {
+          "name": "Old French",
+          "forms": [
+            "paire",
+            "pedre"
+          ],
+          "children": [
+            {
+              "name": "Middle French",
+              "forms": [
+                "pere"
+              ],
+              "children": [
+                {
+                  "name": "French",
+                  "forms": [
+                    "père"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Old Occitan",
+          "children": [
+            {
+              "name": "Occitan",
+              "forms": [
+                "paire"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Catalan",
+          "forms": [
+            "pare"
+          ],
+          "children": []
+        },
+        {
+          "name": "Spanish",
+          "forms": [
+            "padre"
+          ],
+          "children": []
+        },
+        {
+          "name": "Portuguese",
+          "forms": [
+            "pãe"
+          ],
+          "children": []
+        },
+        {
+          "name": "Italian",
+          "forms": [
+            "padre"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Oscan",
+      "forms": [
+        "patir"
+      ],
+      "children": []
+    },
+    {
+      "name": "Gaulish",
+      "forms": [
+        "ater-",
+        "atr-"
+      ],
+      "children": []
+    },
+    {
+      "name": "Early Irish",
+      "forms": [
+        "athair"
+      ],
+      "children": []
+    },
+    {
+      "name": "Armenian",
+      "forms": [
+        "hayr"
+      ],
+      "children": []
+    },
+    {
+      "name": "Tocharian A",
+      "forms": [
+        "pācar"
+      ],
+      "children": []
+    },
+    {
+      "name": "Tocharian B",
+      "forms": [
+        "pācer"
+      ],
+      "children": []
+    },
+    {
+      "name": "Proto-Germanic",
+      "children": [
+        {
+          "name": "Old Frisian",
+          "forms": [
+            "fader",
+            "feder"
+          ],
+          "children": [
+            {
+              "name": "West Frisian",
+              "forms": [
+                "faar"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old Dutch",
+          "forms": [
+            "fadar",
+            "fader"
+          ],
+          "children": [
+            {
+              "name": "Middle Dutch",
+              "forms": [
+                "vāder"
+              ],
+              "children": [
+                {
+                  "name": "Dutch",
+                  "forms": [
+                    "vader"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Old Saxon",
+          "forms": [
+            "fadar",
+            "fader"
+          ],
+          "children": [
+            {
+              "name": "Middle Low German",
+              "forms": [
+                "vāder"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old High German",
+          "forms": [
+            "fater"
+          ],
+          "children": [
+            {
+              "name": "Middle High German",
+              "forms": [
+                "vater"
+              ],
+              "children": [
+                {
+                  "name": "German",
+                  "forms": [
+                    "Vater"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "early Scandinavian",
+          "forms": [
+            "faþiR"
+          ],
+          "children": [
+            {
+              "name": "Old Icelandic",
+              "forms": [
+                "faðir"
+              ],
+              "children": []
+            },
+            {
+              "name": "Norn",
+              "forms": [
+                "fa",
+                "fy",
+                "fyrin"
+              ],
+              "children": []
+            },
+            {
+              "name": "Old Swedish",
+              "forms": [
+                "faþir"
+              ],
+              "children": [
+                {
+                  "name": "Swedish",
+                  "forms": [
+                    "fader",
+                    "far"
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Old Danish",
+              "forms": [
+                "fathær"
+              ],
+              "children": [
+                {
+                  "name": "Danish",
+                  "forms": [
+                    "fader",
+                    "far"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Gothic",
+          "forms": [
+            "fadar",
+            "atta"
+          ],
+          "children": []
+        }
+      ]
+    }
+  ]
+}

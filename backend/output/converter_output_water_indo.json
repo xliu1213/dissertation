@@ -1,0 +1,208 @@
+{
+  "name": "Indo-European",
+  "children": [
+    {
+      "name": "Hittite",
+      "forms": [
+        "u̯iten-",
+        "u̯ātar"
+      ],
+      "children": []
+    },
+    {
+      "name": "Lithuanian",
+      "forms": [
+        "vanduo"
+      ],
+      "children": []
+    },
+    {
+      "name": "Old Church Slavonic",
+      "forms": [
+        "voda"
+      ],
+      "children": []
+    },
+    {
+      "name": "Sanskrit",
+      "forms": [
+        "udan"
+      ],
+      "children": []
+    },
+    {
+      "name": "ancient Greek",
+      "forms": [
+        "ὕδατ-",
+        "ὕδωρ"
+      ],
+      "children": []
+    },
+    {
+      "name": "Umbrian",
+      "forms": [
+        "un-",
+        "utur"
+      ],
+      "children": []
+    },
+    {
+      "name": "classical Latin",
+      "forms": [
+        "unda"
+      ],
+      "children": []
+    },
+    {
+      "name": "Old Prussian",
+      "forms": [
+        "unds",
+        "wundan"
+      ],
+      "children": []
+    },
+    {
+      "name": "Latvian",
+      "forms": [
+        "ūdens"
+      ],
+      "children": []
+    },
+    {
+      "name": "Early Irish",
+      "forms": [
+        "uisce"
+      ],
+      "children": []
+    },
+    {
+      "name": "Proto-Germanic",
+      "children": [
+        {
+          "name": "Old Frisian",
+          "forms": [
+            "weter"
+          ],
+          "children": [
+            {
+              "name": "West Frisian",
+              "forms": [
+                "wetter"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old Dutch",
+          "forms": [
+            "watar"
+          ],
+          "children": [
+            {
+              "name": "Middle Dutch",
+              "children": [
+                {
+                  "name": "Dutch",
+                  "forms": [
+                    "water"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Old Saxon",
+          "forms": [
+            "watar"
+          ],
+          "children": [
+            {
+              "name": "Middle Low German",
+              "forms": [
+                "water"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old High German",
+          "forms": [
+            "wazzar"
+          ],
+          "children": [
+            {
+              "name": "Middle High German",
+              "forms": [
+                "wazzer"
+              ],
+              "children": [
+                {
+                  "name": "German",
+                  "forms": [
+                    "Wasser"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Old Icelandic",
+          "forms": [
+            "vatr",
+            "vatn"
+          ],
+          "children": []
+        },
+        {
+          "name": "English",
+          "children": []
+        },
+        {
+          "name": "Old Swedish",
+          "forms": [
+            "vatn"
+          ],
+          "children": [
+            {
+              "name": "Swedish",
+              "forms": [
+                "vatten"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old Danish",
+          "forms": [
+            "wadn",
+            "wand"
+          ],
+          "children": [
+            {
+              "name": "Danish",
+              "forms": [
+                "vand"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Gothic",
+          "forms": [
+            "watin-",
+            "watō"
+          ],
+          "children": []
+        }
+      ]
+    }
+  ]
+}

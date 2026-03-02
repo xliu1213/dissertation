@@ -1,0 +1,127 @@
+{
+  "name": "Indo-European",
+  "children": [
+    {
+      "name": "ancient Greek",
+      "forms": [
+        "κύριος",
+        "‑ακός"
+      ],
+      "children": [
+        {
+          "name": "Hellenistic Greek",
+          "forms": [
+            "κυριακός"
+          ],
+          "children": [
+            {
+              "name": "Byzantine Greek",
+              "forms": [
+                "κυριακόν",
+                "κυριακὸν δῶμα"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Proto-Germanic",
+      "children": [
+        {
+          "name": "Old Frisian",
+          "forms": [
+            "tzerke",
+            "tzerk",
+            "tzierke",
+            "tzark",
+            "tziurke",
+            "kerke"
+          ],
+          "children": [
+            {
+              "name": "West Frisian",
+              "forms": [
+                "tsjerke"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old Dutch",
+          "forms": [
+            "kirika",
+            "kerk"
+          ],
+          "children": [
+            {
+              "name": "Middle Dutch",
+              "forms": [
+                "kirke",
+                "kerke",
+                "keerke",
+                "kerk"
+              ],
+              "children": [
+                {
+                  "name": "Dutch",
+                  "forms": [
+                    "kerk"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Old Saxon",
+          "forms": [
+            "kerika",
+            "kirika"
+          ],
+          "children": [
+            {
+              "name": "Middle Low German",
+              "forms": [
+                "kerke",
+                "karke"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Old High German",
+          "forms": [
+            "kirihha",
+            "khirihha",
+            "chiricha",
+            "chilihha",
+            "chīlihha"
+          ],
+          "children": [
+            {
+              "name": "Middle High German",
+              "forms": [
+                "kirche",
+                "kilche"
+              ],
+              "children": [
+                {
+                  "name": "German",
+                  "forms": [
+                    "Kirche"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
