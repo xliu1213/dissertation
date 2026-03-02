@@ -4,8 +4,8 @@ from pathlib import Path
 # Resolve paths relative to this file, so it works no matter the CWD
 BASE_DIR = Path(__file__).resolve().parent  
 INPUT_DIR = BASE_DIR / "output"
-GERMANIC_PATH = INPUT_DIR / "parser_output_holy_germanic.json"
-INDO_PATH = INPUT_DIR / "parser_output_holy_indo.json"
+GERMANIC_PATH = INPUT_DIR / "parser_output_royal_germanic.json"
+INDO_PATH = INPUT_DIR / "parser_output_royal_indo.json"
 WORD = GERMANIC_PATH.stem.replace("parser_output_", "").replace("_germanic", "") # Infer WORD from parser input
 HIERARCHY_PATH = BASE_DIR / "languageHierarchy.json"
 EXPORT_BRANCHES = {
