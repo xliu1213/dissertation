@@ -15,9 +15,16 @@ EXPORT_BRANCHES = {
 ALWAYS_INCLUDE = {
     "germanic": {"Proto-Germanic"}
 }
+LANGUAGE_ALIASES = { # Language aliases / normalisation
+    "Old Germanic": "Proto-Germanic"
+}
+
+def normalise_language(lang):
+    return LANGUAGE_ALIASES.get(lang, lang)
 
 def merge_entries(target, source):
     for lang, forms in source.items():
+        lang = normalise_language(lang)
         if lang not in target:
             target[lang] = forms.copy()
         else:

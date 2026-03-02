@@ -1,5 +1,8 @@
 {
   "name": "Proto-Germanic",
+  "forms": [
+    "*hailag-oz"
+  ],
   "children": [
     {
       "name": "Old English",
@@ -11,7 +14,22 @@
         "*hailoz-",
         "*hailiz-"
       ],
-      "children": []
+      "children": [
+        {
+          "name": "Northumbrian",
+          "forms": [
+            "hǽlig"
+          ],
+          "children": []
+        },
+        {
+          "name": "Middle English",
+          "forms": [
+            "hely"
+          ],
+          "children": []
+        }
+      ]
     },
     {
       "name": "Old Frisian",
