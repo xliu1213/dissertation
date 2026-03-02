@@ -20,6 +20,15 @@
     "Albanian",
     "Old Welsh"
   ],
+  "Proto-Germanic": [
+    "Old Frisian", 
+    "Old Dutch", 
+    "Old Saxon", 
+    "Old High German", 
+    "early Scandinavian", 
+    "Gothic", 
+    "Old English"
+  ],
   "Greek": ["ancient Greek"],
   "Latin": ["classical Latin"],
   "Old Church Slavonic": ["Russian"],
@@ -37,18 +46,9 @@
   "Middle French": ["French"],
   "Old Occitan": ["Occitan"],
   "Early Irish": ["Irish"],
-  "Proto-Germanic": [
-    "Old Frisian", 
-    "Old Dutch", 
-    "Old Saxon", 
-    "Old High German", 
-    "early Scandinavian", 
-    "Gothic", 
-    "Old English"
-  ],
   "Old English": ["English"],
   "early Scandinavian": ["Old Norse"],
-  "Old Norse": ["Old Icelandic", "Norn", "Old Swedish", "Old Danish", "Old Gutnish", "Norwegian"],
+  "Old Norse": ["Old Icelandic", "Norn", "Old Swedish", "Old Danish", "Old Gutnish", "Norwegi"],
   "Old Frisian": ["West Frisian"],
   "Old Dutch": ["Middle Dutch"],
   "Middle Dutch": ["Dutch"],
