@@ -2,6 +2,13 @@
   "name": "Indo-European",
   "children": [
     {
+      "name": "Old English",
+      "forms": [
+        "singan"
+      ],
+      "children": []
+    },
+    {
       "name": "Old Frisian",
       "forms": [
         "sionga"
@@ -52,22 +59,37 @@
       ]
     },
     {
-      "name": "Icelandic",
-      "children": []
-    },
-    {
-      "name": "Swedish",
+      "name": "Old Norse",
       "forms": [
-        "sjunga"
+        "syngva"
       ],
-      "children": []
-    },
-    {
-      "name": "Danish",
-      "forms": [
-        "synge"
-      ],
-      "children": []
+      "children": [
+        {
+          "name": "Icelandic",
+          "children": []
+        },
+        {
+          "name": "Norwegian",
+          "forms": [
+            "syngja"
+          ],
+          "children": []
+        },
+        {
+          "name": "Swedish",
+          "forms": [
+            "sjunga"
+          ],
+          "children": []
+        },
+        {
+          "name": "Danish",
+          "forms": [
+            "synge"
+          ],
+          "children": []
+        }
+      ]
     },
     {
       "name": "Gothic",
