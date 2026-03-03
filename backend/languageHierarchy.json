@@ -1,26 +1,31 @@
 {
-  "Indo-European": [
-    "Proto-Germanic",
-    "Hittite",
-    "Lithuanian",
-    "Old Church Slavonic",
-    "Sanskrit",
-    "Old Avestan",
-    "Greek",
-    "Umbrian",
-    "Latin",
-    "Old Prussian",
-    "Latvian",
-    "Oscan",
-    "Gaulish",
-    "Early Irish",
-    "Armenian",
-    "Tocharian A",
-    "Tocharian B",
-    "Albanian",
-    "Old Welsh"
-  ],
-  "Proto-Germanic": [
+  "Indo-European": {
+    "children": [
+      "Proto-Germanic",
+      "Hittite",
+      "Lithuanian",
+      "Old Church Slavonic",
+      "Sanskrit",
+      "Old Avestan",
+      "Greek",
+      "Umbrian",
+      "Latin",
+      "Old Prussian",
+      "Latvian",
+      "Oscan",
+      "Gaulish",
+      "Early Irish",
+      "Armenian",
+      "Tocharian A",
+      "Tocharian B",
+      "Albanian",
+      "Old Welsh"
+    ],
+    "start": -4000,
+    "end": -2500
+  },
+  "Proto-Germanic": {
+    "children":   [
     "Old Frisian", 
     "Old Dutch", 
     "Old Saxon", 
@@ -28,38 +33,338 @@
     "early Scandinavian", 
     "Gothic", 
     "Old English"
-  ],
-  "Old English": ["Middle English", "Northumbrian"],
-  "Middle English": ["English"],
-  "Greek": ["ancient Greek"],
-  "Latin": ["classical Latin"],
-  "Old Church Slavonic": ["Russian"],
-  "Old Avestan": ["Younger Avestan"],
-  "classical Latin": [
-    "Old French",
-    "Old Occitan",
-    "Catalan",
-    "Spanish",
-    "Portuguese",
-    "Italian",
-    "Romanian"
-  ],
-  "Old French": ["Middle French", "Anglo-Norman"],
-  "Middle French": ["French"],
-  "Old Occitan": ["Occitan"],
-  "Early Irish": ["Irish"],
-  "early Scandinavian": ["Old Norse"],
-  "Old Norse": ["Old Icelandic", "Norn", "Old Swedish", "Old Danish", "Old Gutnish", "Norwegian"],
-  "Old Frisian": ["West Frisian"],
-  "Old Dutch": ["Middle Dutch"],
-  "Middle Dutch": ["Dutch"],
-  "Old High German": ["Middle High German"],
-  "Middle High German": ["German"],
-  "Old Saxon": ["Middle Low German"],
-  "Old Icelandic": ["Icelandic"],
-  "Old Swedish": ["Swedish"],
-  "Old Danish": ["Danish"],
-  "Old Welsh": ["Welsh"],
-  "ancient Greek": ["Hellenistic Greek"],
-  "Hellenistic Greek": ["Byzantine Greek"]
+    ],
+    "start": -500,
+    "end": 200
+  },
+  "Old English": {
+    "children": ["Middle English", "Northumbrian"],
+    "start": 450,
+    "end": 1100
+  },
+  "Middle English": {
+    "children": ["English"],
+    "start": 1100,
+    "end": 1500
+  },
+  "English": {
+    "children": [],
+    "start": 1500,
+    "end": 2025
+  },
+  "Old High German": {
+    "children": ["Middle High German"],
+    "start": 750,
+    "end": 1050
+  },
+  "Middle High German": {
+    "children": ["German"],
+    "start": 1050,
+    "end": 1350
+  },
+  "German": {
+    "children": [],
+    "start": 1350,
+    "end": 2025
+  },
+  "Old Saxon": {
+    "children": ["Middle Low German"],
+    "start": 750,
+    "end": 1100
+  },
+  "Middle Low German": {
+    "children": [],
+    "start": 1100,
+    "end": 1500
+  },
+  "Old Dutch": {
+    "children": ["Middle Dutch"],
+    "start": 500,
+    "end": 1150
+  },
+  "Middle Dutch": {
+    "children": ["Dutch"],
+    "start": 1150,
+    "end": 1500
+  },
+  "Dutch": {
+    "children": [],
+    "start": 1500,
+    "end": 2025
+  },
+  "Old Frisian": {
+    "children": ["West Frisian"],
+    "start": 800,
+    "end": 1500
+  },
+  "West Frisian": {
+    "children": [],
+    "start": 1500,
+    "end": 2025
+  },
+  "early Scandinavian": {
+    "children": ["Old Norse"],
+    "start": 200,
+    "end": 800
+  },
+  "Old Norse": {
+    "children": [
+      "Old Icelandic",
+      "Norn",
+      "Old Swedish",
+      "Old Danish",
+      "Old Gutnish",
+      "Norwegian"
+    ],
+    "start": 800,
+    "end": 1300
+  },
+  "Old Icelandic": {
+    "children": ["Icelandic"],
+    "start": 1100,
+    "end": 1500
+  },
+  "Icelandic": {
+    "children": [],
+    "start": 1500,
+    "end": 2025
+  },
+  "Old Swedish": {
+    "children": ["Swedish"],
+    "start": 1225,
+    "end": 1526
+  },
+  "Swedish": {
+    "children": [],
+    "start": 1526,
+    "end": 2025
+  },
+  "Old Danish": {
+    "children": ["Danish"],
+    "start": 800,
+    "end": 1525
+  },
+  "Danish": {
+    "children": [],
+    "start": 1525,
+    "end": 2025
+  },
+  "Gothic": {
+    "children": [],
+    "start": 300,
+    "end": 600
+  },
+  "Latin": {
+    "children": ["classical Latin"],
+    "start": -700,
+    "end": -75
+  },
+  "classical Latin": {
+    "children": [
+      "Old French",
+      "Old Occitan",
+      "Catalan",
+      "Spanish",
+      "Portuguese",
+      "Italian",
+      "Romanian"
+    ],
+    "start": -75,
+    "end": 500
+  },
+  "Old French": {
+    "children": ["Middle French", "Anglo-Norman"],
+    "start": 800,
+    "end": 1400
+  },
+  "Middle French": {
+    "children": ["French"],
+    "start": 1400,
+    "end": 1600
+  },
+  "French": {
+    "children": [],
+    "start": 1600,
+    "end": 2025
+  },
+  "Greek": {
+    "children": ["ancient Greek"],
+    "start": -1600,
+    "end": -300
+  },
+  "ancient Greek": {
+    "children": ["Hellenistic Greek"],
+    "start": -800,
+    "end": -300
+  },
+  "Hellenistic Greek": {
+    "children": ["Byzantine Greek"],
+    "start": -300,
+    "end": 600
+  },
+  "Byzantine Greek": {
+    "children": [],
+    "start": 600,
+    "end": 1453
+  },
+  "Old Church Slavonic": {
+    "children": ["Russian"],
+    "start": 850,
+    "end": 1100
+  },
+  "Russian": {
+    "children": [],
+    "start": 1100,
+    "end": 2025
+  },
+  "Old Avestan": {
+    "children": ["Younger Avestan"],
+    "start": -1200,
+    "end": -800
+  },
+  "Younger Avestan": {
+    "children": [],
+    "start": -800,
+    "end": -300
+  },
+  "Old Occitan": {
+    "children": ["Occitan"],
+    "start": 800,
+    "end": 1200
+  },
+  "Occitan": {
+    "children": [],
+    "start": 1200,
+    "end": 2025
+  },
+  "Early Irish": {
+    "children": ["Irish"],
+    "start": 400,
+    "end": 900
+  },
+  "Irish": {
+    "children": [],
+    "start": 900,
+    "end": 2025
+  },
+  "Old Welsh": {
+    "children": ["Welsh"],
+    "start": 800,
+    "end": 1200
+  },
+  "Welsh": {
+    "children": [],
+    "start": 1200,
+    "end": 2025
+  },
+  "Hittite": {
+    "children": [],
+    "start": -1650,
+    "end": -1200
+  },
+  "Lithuanian": {
+    "children": [],
+    "start": 1500,
+    "end": 2025
+  },
+  "Sanskrit": {
+    "children": [],
+    "start": -1500,
+    "end": -500
+  },
+  "Umbrian": {
+    "children": [],
+    "start": -700,
+    "end": -100
+  },
+  "Old Prussian": {
+    "children": [],
+    "start": 1300,
+    "end": 1700
+  },
+  "Latvian": {
+    "children": [],
+    "start": 1500,
+    "end": 2025
+  },
+  "Oscan": {
+    "children": [],
+    "start": -600,
+    "end": -100
+  },
+  "Gaulish": {
+    "children": [],
+    "start": -500,
+    "end": 500
+  },
+  "Armenian": {
+    "children": [],
+    "start": 400,
+    "end": 2025
+  },
+  "Tocharian A": {
+    "children": [],
+    "start": 400,
+    "end": 800
+  },
+  "Tocharian B": {
+    "children": [],
+    "start": 400,
+    "end": 800
+  },
+  "Albanian": {
+    "children": [],
+    "start": 1400,
+    "end": 2025
+  },
+  "Northumbrian": {
+    "children": [],
+    "start": 450,
+    "end": 900
+  },
+  "Norn": {
+    "children": [],
+    "start": 1300,
+    "end": 1850
+  },
+  "Old Gutnish": {
+    "children": [],
+    "start": 1200,
+    "end": 1600
+  },
+  "Norwegian": {
+    "children": [],
+    "start": 1350,
+    "end": 2025
+  },
+  "Catalan": {
+    "children": [],
+    "start": 1200,
+    "end": 2025
+  },
+  "Spanish": {
+    "children": [],
+    "start": 1500,
+    "end": 2025
+  },
+  "Portuguese": {
+    "children": [],
+    "start": 1500,
+    "end": 2025
+  },
+  "Italian": {
+    "children": [],
+    "start": 1300,
+    "end": 2025
+  },
+  "Romanian": {
+    "children": [],
+    "start": 1500,
+    "end": 2025
+  },
+  "Anglo-Norman": {
+    "children": [],
+    "start": 1066,
+    "end": 1400
+  }
 }

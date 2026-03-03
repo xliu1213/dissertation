@@ -62,7 +62,7 @@ order_index = {lang: i for i, lang in enumerate(appearance_order)}
 allowed = set(words_data.keys())
 def find_visible_children(name, branch):
     visible = []
-    for child in hierarchy.get(name, []):
+    for child in hierarchy.get(name, {}).get("children", []):
         if (
             child in allowed
             or child in ALWAYS_INCLUDE.get(branch, set())
@@ -74,7 +74,12 @@ def find_visible_children(name, branch):
     return visible
 
 def build_tree(name, branch):
-    node = {"name": name}
+    lang_meta = hierarchy.get(name, {})
+    node = {
+        "name": name,
+        "start": lang_meta.get("start"),
+        "end": lang_meta.get("end")
+    }
     forms = words_data.get(name)
     if forms:
         node["forms"] = forms

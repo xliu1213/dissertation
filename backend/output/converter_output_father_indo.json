@@ -1,8 +1,12 @@
 {
   "name": "Indo-European",
+  "start": -4000,
+  "end": -2500,
   "children": [
     {
       "name": "Sanskrit",
+      "start": -1500,
+      "end": -500,
       "forms": [
         "pitṛ"
       ],
@@ -10,12 +14,16 @@
     },
     {
       "name": "Old Avestan",
+      "start": -1200,
+      "end": -800,
       "forms": [
         "ptar"
       ],
       "children": [
         {
           "name": "Younger Avestan",
+          "start": -800,
+          "end": -300,
           "forms": [
             "pitar"
           ],
@@ -25,6 +33,8 @@
     },
     {
       "name": "ancient Greek",
+      "start": -800,
+      "end": -300,
       "forms": [
         "πατήρ"
       ],
@@ -32,12 +42,16 @@
     },
     {
       "name": "classical Latin",
+      "start": -75,
+      "end": 500,
       "forms": [
         "pater"
       ],
       "children": [
         {
           "name": "Old French",
+          "start": 800,
+          "end": 1400,
           "forms": [
             "paire",
             "pedre"
@@ -45,12 +59,16 @@
           "children": [
             {
               "name": "Middle French",
+              "start": 1400,
+              "end": 1600,
               "forms": [
                 "pere"
               ],
               "children": [
                 {
                   "name": "French",
+                  "start": 1600,
+                  "end": 2025,
                   "forms": [
                     "père"
                   ],
@@ -62,9 +80,13 @@
         },
         {
           "name": "Old Occitan",
+          "start": 800,
+          "end": 1200,
           "children": [
             {
               "name": "Occitan",
+              "start": 1200,
+              "end": 2025,
               "forms": [
                 "paire"
               ],
@@ -74,6 +96,8 @@
         },
         {
           "name": "Catalan",
+          "start": 1200,
+          "end": 2025,
           "forms": [
             "pare"
           ],
@@ -81,6 +105,8 @@
         },
         {
           "name": "Spanish",
+          "start": 1500,
+          "end": 2025,
           "forms": [
             "padre"
           ],
@@ -88,6 +114,8 @@
         },
         {
           "name": "Portuguese",
+          "start": 1500,
+          "end": 2025,
           "forms": [
             "pãe"
           ],
@@ -95,6 +123,8 @@
         },
         {
           "name": "Italian",
+          "start": 1300,
+          "end": 2025,
           "forms": [
             "padre"
           ],
@@ -104,6 +134,8 @@
     },
     {
       "name": "Oscan",
+      "start": -600,
+      "end": -100,
       "forms": [
         "patir"
       ],
@@ -111,6 +143,8 @@
     },
     {
       "name": "Gaulish",
+      "start": -500,
+      "end": 500,
       "forms": [
         "ater-",
         "atr-"
@@ -119,6 +153,8 @@
     },
     {
       "name": "Early Irish",
+      "start": 400,
+      "end": 900,
       "forms": [
         "athair"
       ],
@@ -126,6 +162,8 @@
     },
     {
       "name": "Armenian",
+      "start": 400,
+      "end": 2025,
       "forms": [
         "hayr"
       ],
@@ -133,6 +171,8 @@
     },
     {
       "name": "Tocharian A",
+      "start": 400,
+      "end": 800,
       "forms": [
         "pācar"
       ],
@@ -140,6 +180,8 @@
     },
     {
       "name": "Tocharian B",
+      "start": 400,
+      "end": 800,
       "forms": [
         "pācer"
       ],
@@ -147,9 +189,13 @@
     },
     {
       "name": "Proto-Germanic",
+      "start": -500,
+      "end": 200,
       "children": [
         {
           "name": "Old Frisian",
+          "start": 800,
+          "end": 1500,
           "forms": [
             "fader",
             "feder"
@@ -157,6 +203,8 @@
           "children": [
             {
               "name": "West Frisian",
+              "start": 1500,
+              "end": 2025,
               "forms": [
                 "faar"
               ],
@@ -166,6 +214,8 @@
         },
         {
           "name": "Old Dutch",
+          "start": 500,
+          "end": 1150,
           "forms": [
             "fadar",
             "fader"
@@ -173,12 +223,16 @@
           "children": [
             {
               "name": "Middle Dutch",
+              "start": 1150,
+              "end": 1500,
               "forms": [
                 "vāder"
               ],
               "children": [
                 {
                   "name": "Dutch",
+                  "start": 1500,
+                  "end": 2025,
                   "forms": [
                     "vader"
                   ],
@@ -190,6 +244,8 @@
         },
         {
           "name": "Old Saxon",
+          "start": 750,
+          "end": 1100,
           "forms": [
             "fadar",
             "fader"
@@ -197,6 +253,8 @@
           "children": [
             {
               "name": "Middle Low German",
+              "start": 1100,
+              "end": 1500,
               "forms": [
                 "vāder"
               ],
@@ -206,18 +264,24 @@
         },
         {
           "name": "Old High German",
+          "start": 750,
+          "end": 1050,
           "forms": [
             "fater"
           ],
           "children": [
             {
               "name": "Middle High German",
+              "start": 1050,
+              "end": 1350,
               "forms": [
                 "vater"
               ],
               "children": [
                 {
                   "name": "German",
+                  "start": 1350,
+                  "end": 2025,
                   "forms": [
                     "Vater"
                   ],
@@ -229,12 +293,16 @@
         },
         {
           "name": "early Scandinavian",
+          "start": 200,
+          "end": 800,
           "forms": [
             "faþiR"
           ],
           "children": [
             {
               "name": "Old Icelandic",
+              "start": 1100,
+              "end": 1500,
               "forms": [
                 "faðir"
               ],
@@ -242,6 +310,8 @@
             },
             {
               "name": "Norn",
+              "start": 1300,
+              "end": 1850,
               "forms": [
                 "fa",
                 "fy",
@@ -251,12 +321,16 @@
             },
             {
               "name": "Old Swedish",
+              "start": 1225,
+              "end": 1526,
               "forms": [
                 "faþir"
               ],
               "children": [
                 {
                   "name": "Swedish",
+                  "start": 1526,
+                  "end": 2025,
                   "forms": [
                     "fader",
                     "far"
@@ -267,12 +341,16 @@
             },
             {
               "name": "Old Danish",
+              "start": 800,
+              "end": 1525,
               "forms": [
                 "fathær"
               ],
               "children": [
                 {
                   "name": "Danish",
+                  "start": 1525,
+                  "end": 2025,
                   "forms": [
                     "fader",
                     "far"
@@ -285,6 +363,8 @@
         },
         {
           "name": "Gothic",
+          "start": 300,
+          "end": 600,
           "forms": [
             "fadar",
             "atta"
