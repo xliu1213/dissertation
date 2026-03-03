@@ -130,9 +130,12 @@ function drawTree() {
         .each(function(d) {
           const text = d3.select(this);
           const arrow = mode.expandable && (d.children || d._children) ? (d.children ? "▼ " : "▶ ") : "";
-          const nameLine = arrow + d.data.name;
-          text.append("tspan").attr("x", 0).attr("dy", 0).text(nameLine);
-          if (d.data.start !== undefined && d.data.end !== undefined) { // Date Range Line 
+          text.append("tspan") // LANGUAGE NAME (bold)
+            .attr("x", 0)
+            .attr("dy", 0)
+            .style("font-weight", "bold")
+            .text(arrow + d.data.name);
+          if (d.data.start !== undefined && d.data.end !== undefined) {
             function formatYear(y) {
               return y < 0 ? Math.abs(y) + " BCE" : y;
             }
@@ -140,16 +143,14 @@ function drawTree() {
             text.append("tspan")
               .attr("x", 0)
               .attr("dy", 14)
-              .style("font-size", "0.8em")
-              .style("fill", "#777")
+              .style("font-size", "0.9em")   // same size as forms
+              .style("fill", "#555")         // same color as forms
               .text(dateLine);
           }
           if (!isExplore && d.data.forms) { // Second line: word forms (ONLY for non-explore modes)
             text.append("tspan")
               .attr("x", 0)
-              .attr("dy", 28)   // vertical spacing between lines
-              .style("font-size", "0.9em")
-              .style("fill", "#555")
+              .attr("dy", 14)   // vertical spacing between lines
               .text("(" + d.data.forms.join(", ") + ")");
           }
           if (isExplore && d.data.forms) { // For explore mode, keep everything inline
