@@ -29,7 +29,7 @@ const MODES = {
     expandable: true
   }
 };
-let currentMode = "germanic";
+let currentMode = "indoExpand";
 function setBodyModeClass(modeKey) {
   document.body.classList.remove("germanic", "indoStatic", "indoExpand");
   document.body.classList.add(modeKey);
@@ -43,7 +43,7 @@ function drawTree() {
   const g = svgEl.append("g").attr(
     "transform",
     isExplore
-      ? "translate(60,60)"   // add left margin for horizontal mode
+      ? "translate(80,60)"   // add left margin for horizontal mode
       : "translate(0,60)"
   );
   
@@ -125,26 +125,31 @@ function drawTree() {
           if (start < 1800) return "#805ad5";     // Purple
           return "#d53f8c";                       // Pink (Modern)
         });
-      node.append("text").style("text-anchor", "middle") 
-        .each(function(d) {
-          node.append("text").style("text-anchor", "middle")
-            .attr("transform", "translate(0,-45)") // move whole label above node
-            .each(function(d) {
-              const text = d3.select(this);
-              const arrow = mode.expandable && (d.children || d._children) ? (d.children ? "▼ " : "▶ ") : "";
-              text.append("tspan").style("font-weight", "bold").text(arrow + d.data.name); // LANGUAGE (bold)
-              if (d.data.forms) { 
-                text.append("tspan").attr("x", 0).attr("dy", 17).text(d.data.forms.join(", ")); // FORMS (second line)
-              }
-              if (d.data.start !== undefined && d.data.end !== undefined) { // DATES (third line)
-                function formatYear(y) {
-                  return y < 0 ? Math.abs(y) + " BCE" : y;
-                }
-                const dateLine = "(" + formatYear(d.data.start) + "–" + formatYear(d.data.end) + ")";
-                text.append("tspan").attr("x", 0).attr("dy", 15).style("font-size", "0.9em").style("fill", "#555").text(dateLine);
-              }
-            });
-        });
+      node.append("text").each(function(d) {
+        const text = d3.select(this);
+        const arrow = mode.expandable && (d.children || d._children) ? (d.children ? "▼ " : "▶ ") : "";
+        if (isExplore) {
+          text.attr("x", 18).attr("y", -20).style("text-anchor", "start"); // push right of circle // lift slightly
+        } else {
+          text.attr("transform", "translate(0,-45)").style("text-anchor", "middle");
+        }
+        text.append("tspan").style("font-weight", "bold").text(arrow + d.data.name); // LANGUAGE  
+        if (d.data.forms) { // FORMS
+          text.append("tspan").attr("x", isExplore ? 18 : 0).attr("dy", 16).text(d.data.forms.join(", "));
+        }
+        if (d.data.start !== undefined && d.data.end !== undefined) { // DATES
+          function formatYear(y) {
+            return y < 0 ? Math.abs(y) + " BCE" : y;
+          }
+          const dateLine = "(" + formatYear(d.data.start) + "–" + formatYear(d.data.end) + ")";
+          text.append("tspan")
+            .attr("x", isExplore ? 18 : 0)
+            .attr("dy", 15)
+            .style("font-size", "0.9em")
+            .style("fill", "#555")
+            .text(dateLine);
+        }
+      });
     }
     function collapse(d) {
       if (d.children) {
