@@ -29,9 +29,7 @@ const MODES = {
     expandable: true
   }
 };
-
 let currentMode = "germanic";
-
 function setBodyModeClass(modeKey) {
   document.body.classList.remove("germanic", "indoStatic", "indoExpand");
   document.body.classList.add(modeKey);
@@ -48,36 +46,35 @@ function drawTree() {
       ? "translate(60,60)"   // add left margin for horizontal mode
       : "translate(0,50)"
   );
-  // ---- Legend ----
-  const legend = svgEl.append("g")
-    .attr("transform", "translate(20,20)");
-
+  
+  const legend = svgEl.append("g").attr("transform", "translate(0,0)");
   const legendData = [
-    { label: "BCE / Ancient", color: "#2b6cb0" },
-    { label: "0–600", color: "#6b46c1" },
-    { label: "600–1100", color: "#2c7a7b" },
-    { label: "1100–1500", color: "#d69e2e" },
-    { label: "1500–1800", color: "#38a169" },
-    { label: "1800+", color: "#22543d" }
+    { label: "BCE / Ancient", color: "#e53e3e" },
+    { label: "0–600", color: "#dd6b20" },
+    { label: "600–1100", color: "#38a169" },
+    { label: "1100–1500", color: "#3182ce" },
+    { label: "1500–1800", color: "#805ad5" },
+    { label: "1800+", color: "#d53f8c" }
   ];
-
+  const rowHeight = 30;      // spacing between rows
+  const boxSize = 20;        // size of colour square
+  const textOffset = 30;     // distance between box and text
   legend.selectAll("rect")
     .data(legendData)
     .enter()
     .append("rect")
     .attr("x", 0)
-    .attr("y", (d, i) => i * 18)
-    .attr("width", 12)
-    .attr("height", 12)
-    .attr("fill", d => d.color);
-
+    .attr("y", (d, i) => i * rowHeight)
+    .attr("width", boxSize)
+    .attr("height", boxSize)
+    .attr("fill", d => d.color)
   legend.selectAll("text")
     .data(legendData)
     .enter()
     .append("text")
-    .attr("x", 18)
-    .attr("y", (d, i) => i * 18 + 10)
-    .style("font-size", "11px")
+    .attr("x", textOffset)
+    .attr("y", (d, i) => i * rowHeight + 16)
+    .style("font-size", "20px")
     .text(d => d.label);
   const width = svgEl.node().clientWidth;
   const height = svgEl.node().clientHeight;
@@ -138,20 +135,18 @@ function drawTree() {
           toggle(d);
           update(d);
         });
-      node.append("circle")
-        .attr("r", 6)
-        .attr("fill", d => {
-          const start = d.data.start;
-
-          if (start === undefined) return "#ccc";
-
-          if (start < 0) return "#2b6cb0";        // Ancient / BCE (blue)
-          if (start < 600) return "#6b46c1";      // Late Antique (purple)
-          if (start < 1100) return "#2c7a7b";     // Early Medieval (teal)
-          if (start < 1500) return "#d69e2e";     // Late Medieval (gold)
-          if (start < 1800) return "#38a169";     // Early Modern (green)
-          return "#22543d";                       // Modern (dark green)
-        });
+        node.append("circle")
+          .attr("r", 10)
+          .attr("fill", d => {
+            const start = d.data.start;
+            if (start === undefined) return "#ccc";
+            if (start < 0) return "#e53e3e";        // Red (BCE / Ancient)
+            if (start < 600) return "#dd6b20";      // Orange
+            if (start < 1100) return "#38a169";     // Green
+            if (start < 1500) return "#3182ce";     // Blue
+            if (start < 1800) return "#805ad5";     // Purple
+            return "#d53f8c";                       // Pink (Modern)
+          });
       node.append("text")
         .style("text-anchor", "middle")
         .attr(
