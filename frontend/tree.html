@@ -80,8 +80,7 @@ function drawTree() {
   const height = svgEl.node().clientHeight;
   document.getElementById("title").textContent = mode.title;
   d3.json(mode.file).then(function(data) { 
-    // If backend returned empty object, render nothing
-    if (!data || Object.keys(data).length === 0) {
+    if (!data || Object.keys(data).length === 0) { // If backend returned empty object, render nothing
       svgEl.selectAll("*").remove();
       document.getElementById("title").textContent =
         "No Germanic data available";
@@ -92,17 +91,10 @@ function drawTree() {
       root.children.forEach(collapse);
     }
 
-  const isExplore = (currentMode === "indoExpand");
-
-  const treeLayout = d3.tree()
-    // For horizontal: x = vertical space, y = horizontal space
-    .size(
-      isExplore
-        ? [height - 200, width - 150]  // subtract left + right margin
-        : [width, height - 100]
-    )
-    .separation((a, b) => a.parent === b.parent ? 4 : 6);
-
+    const isExplore = (currentMode === "indoExpand");
+    const treeLayout = d3.tree().size( // For horizontal: x = vertical space, y = horizontal space
+      isExplore ? [height - 200, width - 150]  : [width, height - 100]  // subtract left + right margin
+    ).separation((a, b) => a.parent === b.parent ? 4 : 6); 
     update(root); 
     function update(source) { 
       g.selectAll("*").remove(); 
@@ -111,79 +103,47 @@ function drawTree() {
         .data(root.links())
         .join("path")
         .attr("class", "link")
-        .attr("d",
-          isExplore
-            ? d3.linkHorizontal()
-                .x(d => d.y)
-                .y(d => d.x)
-            : d3.linkVertical()
-                .x(d => d.x)
-                .y(d => d.y)
-        );
-
+        .attr("d", isExplore ? d3.linkHorizontal().x(d => d.y).y(d => d.x) : d3.linkVertical().x(d => d.x).y(d => d.y));
       const node = g.selectAll(".node") // nodes
         .data(root.descendants())
         .join("g")
         .attr("class", "node")
-        .attr("transform", d =>
-          isExplore
-            ? `translate(${d.y},${d.x})`
-            : `translate(${d.x},${d.y})`
-        )
+        .attr("transform", d => isExplore ? `translate(${d.y},${d.x})` : `translate(${d.x},${d.y})`)
         .on("click", (event, d) => { 
           if (!mode.expandable) return;
           toggle(d);
           update(d);
         });
-        node.append("circle")
-          .attr("r", 10)
-          .attr("fill", d => {
-            const start = d.data.start;
-            if (start === undefined) return "#ccc";
-            if (start < 0) return "#e53e3e";        // Red (BCE / Ancient)
-            if (start < 600) return "#dd6b20";      // Orange
-            if (start < 1100) return "#38a169";     // Green
-            if (start < 1500) return "#3182ce";     // Blue
-            if (start < 1800) return "#805ad5";     // Purple
-            return "#d53f8c";                       // Pink (Modern)
-          });
-      node.append("text")
-        .style("text-anchor", "middle")
-        .attr(
-          "transform",
-          isExplore
-            ? "translate(0,-10)"   // horizontal Explore view
-            : "translate(0,-22)"   // vertical Germanic + Overview
-        )
+      node.append("circle").attr("r", 10)
+        .attr("fill", d => {
+          const start = d.data.start;
+          if (start === undefined) return "#ccc";
+          if (start < 0) return "#e53e3e";        // Red (BCE / Ancient)
+          if (start < 600) return "#dd6b20";      // Orange
+          if (start < 1100) return "#38a169";     // Green
+          if (start < 1500) return "#3182ce";     // Blue
+          if (start < 1800) return "#805ad5";     // Purple
+          return "#d53f8c";                       // Pink (Modern)
+        });
+      node.append("text").style("text-anchor", "middle")
+        .attr("transform", isExplore ? "translate(0,-10)" : "translate(0,-22)")   
         .each(function(d) {
           const text = d3.select(this);
-          const arrow =
-            mode.expandable && (d.children || d._children)
-              ? (d.children ? "▼ " : "▶ ")
-              : "";
-      const nameLine = arrow + d.data.name;
-
-      text.append("tspan")
-        .attr("x", 0)
-        .attr("dy", 0)
-        .text(nameLine);
-
-      // ---- NEW: Date Range Line ----
-      if (d.data.start !== undefined && d.data.end !== undefined) {
-
-        function formatYear(y) {
-          return y < 0 ? Math.abs(y) + " BCE" : y;
-        }
-
-        const dateLine = "(" + formatYear(d.data.start) + "–" + formatYear(d.data.end) + ")";
-
-        text.append("tspan")
-          .attr("x", 0)
-          .attr("dy", 14)
-          .style("font-size", "0.8em")
-          .style("fill", "#777")
-          .text(dateLine);
-      }
+          const arrow = mode.expandable && (d.children || d._children) ? (d.children ? "▼ " : "▶ ") : "";
+          const nameLine = arrow + d.data.name;
+          text.append("tspan").attr("x", 0).attr("dy", 0).text(nameLine);
+          if (d.data.start !== undefined && d.data.end !== undefined) { // Date Range Line 
+            function formatYear(y) {
+              return y < 0 ? Math.abs(y) + " BCE" : y;
+            }
+            const dateLine = "(" + formatYear(d.data.start) + "–" + formatYear(d.data.end) + ")";
+            text.append("tspan")
+              .attr("x", 0)
+              .attr("dy", 14)
+              .style("font-size", "0.8em")
+              .style("fill", "#777")
+              .text(dateLine);
+          }
           if (!isExplore && d.data.forms) { // Second line: word forms (ONLY for non-explore modes)
             text.append("tspan")
               .attr("x", 0)
@@ -199,7 +159,6 @@ function drawTree() {
           }
         });
     }
-
     function collapse(d) {
       if (d.children) {
         d._children = d.children;
@@ -207,7 +166,6 @@ function drawTree() {
         d.children = null;
       }
     }
-
     function toggle(d) { 
       if (d.children) {
         d._children = d.children;
