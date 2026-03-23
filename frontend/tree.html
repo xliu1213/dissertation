@@ -1,6 +1,6 @@
 <head>
 <meta charset="UTF-8">
-<title>Germanic "Father" Tree</title>
+<title>Visualisation</title>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <link rel="stylesheet" href="tree.css">
 </head>
@@ -14,27 +14,26 @@
 const svgEl = d3.select("svg");
 const MODES = {
   germanic: {
-    file: "../backend/output/converter_output_father_germanic.json",
-    title: 'Germanic "Father" Language Evolution Tree',
+    file: "../backend/output/converter_germanic.json",
+    title: "Germanic Language Evolution Tree",
     expandable: false
   },
   indoStatic: {
-    file: "../backend/output/converter_output_father_indo.json",
-    title: 'Indo-European "Father" Language Evolution Tree (Overview)',
+    file: "../backend/output/converter_indo.json",
+    title: "Indo-European Language Evolution Tree (Overview)",
     expandable: false
   },
   indoExpand: {
-    file: "../backend/output/converter_output_father_indo.json",
-    title: 'Indo-European "Father" Language Evolution Tree (Explore)',
+    file: "../backend/output/converter_indo.json",
+    title: "Indo-European Language Evolution Tree (Explore)",
     expandable: true
   }
 };
-let currentMode = "indoExpand";
+let currentMode = "germanic";
 function setBodyModeClass(modeKey) {
   document.body.classList.remove("germanic", "indoStatic", "indoExpand");
   document.body.classList.add(modeKey);
 }
-
 function drawTree() {
   svgEl.selectAll("*").remove(); // clear previous render
   const mode = MODES[currentMode];

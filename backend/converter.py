@@ -4,9 +4,6 @@ from pathlib import Path
 # Resolve paths relative to this file, so it works no matter the CWD
 BASE_DIR = Path(__file__).resolve().parent  
 INPUT_DIR = BASE_DIR / "output"
-GERMANIC_PATH = INPUT_DIR / "parser_output_father_germanic.json"
-INDO_PATH = INPUT_DIR / "parser_output_father_indo.json"
-WORD = GERMANIC_PATH.stem.replace("parser_output_", "").replace("_germanic", "") # Infer WORD from parser input
 HIERARCHY_PATH = BASE_DIR / "languageHierarchy.json"
 EXPORT_BRANCHES = {
     "germanic": "Proto-Germanic",
@@ -18,6 +15,11 @@ ALWAYS_INCLUDE = {
 LANGUAGE_ALIASES = { # Language aliases / normalisation
     "Old Germanic": "Proto-Germanic"
 }
+
+GERMANIC_PATH = INPUT_DIR / "parser_germanic.json"
+INDO_PATH = INPUT_DIR / "parser_indo.json"
+GERMANIC_OUTPUT_PATH = INPUT_DIR / "converter_germanic.json"
+INDO_OUTPUT_PATH = INPUT_DIR / "converter_indo.json"
 
 def normalise_language(lang):
     return LANGUAGE_ALIASES.get(lang, lang)
@@ -42,10 +44,9 @@ with INDO_PATH.open("r", encoding="utf-8") as f:
 
 # Handle EMPTY Germanic case
 if germanic_data == {}:
-    output_path = INPUT_DIR / f"converter_output_{WORD}_germanic.json"
-    with output_path.open("w", encoding="utf-8") as f:
+    with GERMANIC_OUTPUT_PATH.open("w", encoding="utf-8") as f:
         json.dump({}, f, indent=2, ensure_ascii=False)
-    print(f"✅ Germanic input empty — blank output written to {output_path}")
+    print(f"✅ Germanic input empty — blank output written to {GERMANIC_OUTPUT_PATH}")
 
 words_data = {}
 if germanic_data:
@@ -96,11 +97,11 @@ def build_tree(name, branch):
     return node
 
 for branch, root in EXPORT_BRANCHES.items():
-    if branch == "germanic" and germanic_data == {}: # Skip germanic if already handled as empty
+    if branch == "germanic" and germanic_data == {}:  # Skip germanic if already handled as empty
         continue
-    allowed.add(root) # ensure Proto-Germanic exists structurally
+    allowed.add(root)  # ensure Proto-Germanic exists structurally
     tree = build_tree(root, branch)
-    output_path = INPUT_DIR / f"converter_output_{WORD}_{branch}.json"
+    output_path = GERMANIC_OUTPUT_PATH if branch == "germanic" else INDO_OUTPUT_PATH
     with output_path.open("w", encoding="utf-8") as f:
         json.dump(tree, f, indent=2, ensure_ascii=False)
     print(f"✅ Tree successfully built and saved to {output_path}")

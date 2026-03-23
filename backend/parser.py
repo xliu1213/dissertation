@@ -1,13 +1,22 @@
 import json
 from bs4 import BeautifulSoup
 from pathlib import Path
+import sys
 
 # Config
 BASE_DIR = Path(__file__).resolve().parent        # D:\Desktop\Dissertation\code\backend
 ROOT_DIR = BASE_DIR.parent                        # D:\Desktop\Dissertation\code
-INPUT_HTML = BASE_DIR / "input" / "father.html"   # D:\Desktop\Dissertation\code\backend\input\father.html
 OUTPUT_DIR = BASE_DIR / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
+
+def resolve_input_html():
+    if len(sys.argv) < 2:
+        raise SystemExit("Please enter the hmtl file in the format: py parser.py <filename.html>")
+    filename = sys.argv[1]
+    input_html = BASE_DIR / "input" / filename
+    if not input_html.exists():
+        raise SystemExit(f"Input file not found: {input_html}")
+    return input_html
 
 # Parse the HTML 
 def parse_html(file_path):
@@ -73,20 +82,19 @@ def extract_language_forms(etymology_div):
                 result[lang].append(f)
     return result
 
-# Export to JSON 
-def export_json(word, entries, filename_suffix):
-    out_path = OUTPUT_DIR / f"parser_output_{word}_{filename_suffix}.json"
+def export_json(entries, filename_suffix):
+    out_path = OUTPUT_DIR / f"parser_{filename_suffix}.json"
     with out_path.open("w", encoding="utf-8") as f:
         json.dump(entries, f, ensure_ascii=False, indent=2)
     print(f"✅ Exported: {out_path}")
 
 # Main pipeline 
 def main():
-    ety = parse_html(INPUT_HTML)
+    input_html = resolve_input_html()
+    ety = parse_html(input_html)
     germanic, indo = split_and_parse(ety)
-    word = INPUT_HTML.stem  # "father" if INPUT_HTML is father.html
-    export_json(word, germanic, "germanic")
-    export_json(word, indo, "indo")
+    export_json(germanic, "germanic")
+    export_json(indo, "indo")
 
 if __name__ == "__main__":
     main()
