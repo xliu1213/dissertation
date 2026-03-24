@@ -1,80 +1,47 @@
 import json
 from pathlib import Path
 
-# Resolve paths relative to this file, so it works no matter the CWD
-BASE_DIR = Path(__file__).resolve().parent  
-INPUT_DIR = BASE_DIR / "output"
-HIERARCHY_PATH = BASE_DIR / "languageHierarchy.json"
+BASE_DIR = Path(__file__).resolve().parent   # D:\Desktop\Dissertation\code\backend
+INPUT_DIR = BASE_DIR / "output" # D:\Desktop\Dissertation\code\backend\output
+HIERARCHY_PATH = BASE_DIR / "languageHierarchy.json" # D:\Desktop\Dissertation\code\backend\languageHierarchy.json
 EXPORT_BRANCHES = {
     "germanic": "Proto-Germanic",
     "indo": "Indo-European"
 }
-ALWAYS_INCLUDE = {
-    "germanic": {"Proto-Germanic"}
-}
-LANGUAGE_ALIASES = { # Language aliases / normalisation
-    "Old Germanic": "Proto-Germanic"
-}
 
-GERMANIC_PATH = INPUT_DIR / "parser_germanic.json"
-INDO_PATH = INPUT_DIR / "parser_indo.json"
+PARSER_OUTPUT_PATH = INPUT_DIR / "parser_output.json"
 GERMANIC_OUTPUT_PATH = INPUT_DIR / "converter_germanic.json"
 INDO_OUTPUT_PATH = INPUT_DIR / "converter_indo.json"
 
-def normalise_language(lang):
-    return LANGUAGE_ALIASES.get(lang, lang)
+with PARSER_OUTPUT_PATH.open("r", encoding="utf-8") as f: # Load all parsed forms from the single parser output
+    words_data = json.load(f)
 
-def merge_entries(target, source):
-    for lang, forms in source.items():
-        lang = normalise_language(lang)
-        if lang not in target:
-            target[lang] = forms.copy()
-        else:
-            for f in forms:
-                if f not in target[lang]:
-                    target[lang].append(f)
-                    
-# Load Germanic forms
-with GERMANIC_PATH.open("r", encoding="utf-8") as f:
-    germanic_data = json.load(f)
+if "Old Germanic" in words_data: # Collapse the only alias we currently need
+    old_germanic_forms = words_data.pop("Old Germanic")
+    if "Proto-Germanic" not in words_data:
+        words_data["Proto-Germanic"] = old_germanic_forms.copy()
+    else:
+        for form in old_germanic_forms:
+            if form not in words_data["Proto-Germanic"]:
+                words_data["Proto-Germanic"].append(form)
 
-# Load Indo-European forms
-with INDO_PATH.open("r", encoding="utf-8") as f:
-    indo_data = json.load(f)
-
-# Handle EMPTY Germanic case
-if germanic_data == {}:
-    with GERMANIC_OUTPUT_PATH.open("w", encoding="utf-8") as f:
-        json.dump({}, f, indent=2, ensure_ascii=False)
-    print(f"✅ Germanic input empty — blank output written to {GERMANIC_OUTPUT_PATH}")
-
-words_data = {}
-if germanic_data:
-    merge_entries(words_data, germanic_data)
-if indo_data:
-    merge_entries(words_data, indo_data)
-
-# Load hierarchy
-with HIERARCHY_PATH.open("r", encoding="utf-8") as f:
+with HIERARCHY_PATH.open("r", encoding="utf-8") as f: # Load hierarchy
     hierarchy = json.load(f)
 
 appearance_order = list(words_data.keys())
 order_index = {lang: i for i, lang in enumerate(appearance_order)}
 allowed = set(words_data.keys())
-def find_visible_children(name, branch):
+
+def find_visible_children(name): # Proto-Germanic
     visible = []
     for child in hierarchy.get(name, {}).get("children", []):
-        if (
-            child in allowed
-            or child in ALWAYS_INCLUDE.get(branch, set())
-        ):
+        if child in allowed:
             visible.append(child)
         else:
-            visible.extend(find_visible_children(child, branch))
-    visible.sort(key=lambda x: order_index.get(x, float("inf")))
+            visible.extend(find_visible_children(child))
     return visible
 
-def build_tree(name, branch):
+def build_tree(name): # Proto-Germanic or Indo-European
     lang_meta = hierarchy.get(name, {})
     node = {
         "name": name,
@@ -84,23 +51,22 @@ def build_tree(name, branch):
     forms = words_data.get(name)
     if forms:
         node["forms"] = forms
-    children = find_visible_children(name, branch)
-    if ( # FORCE structural proto-language visibility
-        name in ALWAYS_INCLUDE.get(branch, set())
-        and not children
-    ):
-        children = []
+    children = find_visible_children(name)
+    if name == "Indo-European" and "Proto-Germanic" in children:
+        children.remove("Proto-Germanic")
+        children.insert(0, "Proto-Germanic")
     node["children"] = [
-        build_tree(child, branch)
+        build_tree(child)
         for child in children
     ]
     return node
 
-for branch, root in EXPORT_BRANCHES.items():
-    if branch == "germanic" and germanic_data == {}:  # Skip germanic if already handled as empty
-        continue
-    allowed.add(root)  # ensure Proto-Germanic exists structurally
-    tree = build_tree(root, branch)
+for branch, root in EXPORT_BRANCHES.items(): # "germanic": "Proto-Germanic",
+    allowed.add(root)  # add Proto-Germanic
+    tree = build_tree(root)
+    has_meaningful_content = bool(tree.get("forms")) or bool(tree.get("children")) # If the Proto-Germanic / Indo-European tree has forms or children, true
+    if not has_meaningful_content: # If tree has no forms and no children, we can just have it as an empty tree
+        tree = {}
     output_path = GERMANIC_OUTPUT_PATH if branch == "germanic" else INDO_OUTPUT_PATH
     with output_path.open("w", encoding="utf-8") as f:
         json.dump(tree, f, indent=2, ensure_ascii=False)
