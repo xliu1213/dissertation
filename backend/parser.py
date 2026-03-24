@@ -3,34 +3,28 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 import sys
 
-# Config
 BASE_DIR = Path(__file__).resolve().parent        # D:\Desktop\Dissertation\code\backend
-ROOT_DIR = BASE_DIR.parent                        # D:\Desktop\Dissertation\code
 OUTPUT_DIR = BASE_DIR / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-def resolve_input_html():
+def resolve_input_html(): # Checks whether the user supplied a filename on the command line
     if len(sys.argv) < 2:
-        raise SystemExit("Please enter the hmtl file in the format: py parser.py <filename.html>")
+        raise SystemExit("Please enter the html file in the format: py parser.py <filename.html>")
     filename = sys.argv[1]
     input_html = BASE_DIR / "input" / filename
     if not input_html.exists():
         raise SystemExit(f"Input file not found: {input_html}")
-    return input_html
+    return input_html # D:\Desktop\Dissertation\code\backend\input\father.html
 
-# Parse the HTML 
-def parse_html(file_path):
+def parse_html(file_path): # Opens the HTML file and extracts the main etymology section 
     with open(file_path, "r", encoding="utf-8") as f:
         soup = BeautifulSoup(f, "html.parser")
     ety = soup.find("div", id="main_etymology_complete")
     if not ety:
         raise ValueError("Etymology section not found in HTML.")
-    return ety
+    return ety # <div class="etymology" id="main_etymology_complete">Cognate...
 
-def trim_indo_html(html: str) -> str:
-    father_marker = '<p></p>' # father-like case: extra paragraph before Notes
-    if father_marker in html:
-        html = html.split(father_marker, 1)[0]
+def trim_etymology_html(html: str) -> str: # Chops off everything including and after Notes
     soup = BeautifulSoup(html, "html.parser")
     notes_h3 = soup.find( # Remove Notes section if present
         "h3",
@@ -43,43 +37,19 @@ def trim_indo_html(html: str) -> str:
         notes_h3.extract()
     return "".join(str(x) for x in soup.contents).strip()
 
-# Split HTML into Germanic and Indo-European sections 
-def split_and_parse(ety):
-    html = str(ety)
-    parts = html.split('<span class="etymology-arrow">&lt;</span>', 1)
-    if len(parts) != 2: # Case where we cannot split → treat everything as Germanic
-        print("⚠️ Could not split etymology — treating as Germanic only")
-        html = trim_indo_html(html)
-        germanic_soup = BeautifulSoup(html, "html.parser")
-        germanic_entries = extract_language_forms(germanic_soup)
-        indo_entries = {}   # <-- REQUIRED CHANGE
-        return germanic_entries, indo_entries
-    germanic_html, indo_html = parts
-    indo_html = trim_indo_html(indo_html) # NEW: trim Indo-European block before the “probably originally…” paragraph
-    germanic_soup = BeautifulSoup(germanic_html, "html.parser")
-    indo_soup = BeautifulSoup(indo_html, "html.parser")
-    germanic_entries = extract_language_forms(germanic_soup)
-    indo_entries = extract_language_forms(indo_soup)
-    return germanic_entries, indo_entries
-
-# Extract language → forms mapping 
 def extract_language_forms(etymology_div):
     result = {}
-    spans = etymology_div.find_all("span", class_="language-name")
-    for span in spans:
-        lang = span.get_text(strip=True)
-        forms = []
-        next_tags = span.find_all_next(["span"], limit=8)
-        for tag in next_tags:
-            if "language-name" in tag.get("class", []):
-                break
-            if "foreign-form" in tag.get("class", []):
-                forms.append(tag.get_text(strip=True))
-        if lang not in result: # Ensure language exists
-            result[lang] = []
-        for f in forms: # Append while preserving uniqueness
-            if f not in result[lang]:
-                result[lang].append(f)
+    current_language = None
+    for span in etymology_div.find_all("span"):
+        classes = span.get("class", []) # should really be called class
+        if "language-name" in classes:
+            current_language = span.get_text(strip=True)
+            if current_language not in result:
+                result[current_language] = []
+        elif "foreign-form" in classes and current_language is not None:
+            form = span.get_text(strip=True)
+            if form not in result[current_language]:
+                result[current_language].append(form)
     return result
 
 def export_json(entries, filename_suffix):
@@ -88,13 +58,10 @@ def export_json(entries, filename_suffix):
         json.dump(entries, f, ensure_ascii=False, indent=2)
     print(f"✅ Exported: {out_path}")
 
-# Main pipeline 
-def main():
-    input_html = resolve_input_html()
-    ety = parse_html(input_html)
-    germanic, indo = split_and_parse(ety)
-    export_json(germanic, "germanic")
-    export_json(indo, "indo")
-
-if __name__ == "__main__":
-    main()
+input_html = resolve_input_html()
+ety = parse_html(input_html)
+html = str(ety)
+trimmed_html = trim_etymology_html(html)
+ety_soup = BeautifulSoup(trimmed_html, "html.parser")
+entries = extract_language_forms(ety_soup)
+export_json(entries, "output")
