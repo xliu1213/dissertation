@@ -1,126 +1,109 @@
 {
   "Old Frisian": [
-    "fader",
-    "feder"
+    "nacht"
   ],
   "West Frisian": [
-    "faar"
-  ],
-  "Old Dutch": [
-    "fadar",
-    "fader"
+    "nacht"
   ],
   "Middle Dutch": [
-    "vāder"
+    "nacht"
   ],
   "Dutch": [
-    "vader"
+    "nacht"
   ],
   "Old Saxon": [
-    "fadar",
-    "fader"
+    "naht"
   ],
   "Middle Low German": [
-    "vāder"
+    "nacht"
   ],
   "Old High German": [
-    "fater"
+    "naht"
   ],
   "Middle High German": [
-    "vater"
+    "naht"
   ],
   "German": [
-    "Vater"
-  ],
-  "early Scandinavian": [
-    "faþiR"
+    "Nacht"
   ],
   "Old Icelandic": [
-    "faðir"
+    "nátt",
+    "nótt"
   ],
-  "Norn": [
-    "fa",
-    "fy",
-    "fyrin"
+  "Icelandic": [
+    "nótt"
   ],
   "Old Swedish": [
-    "faþir"
+    "nat"
   ],
   "Swedish": [
-    "fader",
-    "far"
-  ],
-  "Old Danish": [
-    "fathær"
+    "natt"
   ],
   "Danish": [
-    "fader",
-    "far"
+    "nat"
   ],
   "Gothic": [
-    "fadar",
-    "atta"
+    "nahts"
   ],
   "Indo-European": [],
   "Sanskrit": [
-    "pitṛ"
-  ],
-  "Old Avestan": [
-    "ptar"
-  ],
-  "Younger Avestan": [
-    "pitar"
+    "nak",
+    "nakt-"
   ],
   "ancient Greek": [
-    "πατήρ"
+    "νυκτ-",
+    "νύξ"
   ],
   "classical Latin": [
-    "pater"
+    "noct-",
+    "nox"
   ],
   "Old French": [
-    "paire",
-    "pedre"
+    "noit",
+    "nuit"
   ],
-  "Middle French": [
-    "pere"
-  ],
+  "Middle French": [],
   "French": [
-    "père"
-  ],
-  "Old Occitan": [],
-  "Occitan": [
-    "paire"
-  ],
-  "Catalan": [
-    "pare"
-  ],
-  "Spanish": [
-    "padre"
-  ],
-  "Portuguese": [
-    "pãe"
+    "nuit"
   ],
   "Italian": [
-    "padre"
+    "notte"
   ],
-  "Oscan": [
-    "patir"
+  "Spanish": [
+    "noche"
+  ],
+  "Portuguese": [
+    "noite"
+  ],
+  "Romanian": [
+    "noapte"
   ],
   "Gaulish": [
-    "ater-",
-    "atr-"
+    "noct-",
+    "decamnoctiacis"
   ],
   "Early Irish": [
-    "athair"
+    "nocht"
   ],
-  "Armenian": [
-    "hayr"
+  "Irish": [
+    "anocht"
   ],
-  "Tocharian A": [
-    "pācar"
+  "Old Welsh": [
+    "henoid"
   ],
-  "Tocharian B": [
-    "pācer",
-    "pa"
+  "Welsh": [
+    "heno"
+  ],
+  "Old Church Slavonic": [
+    "noshtĭ"
+  ],
+  "Russian": [
+    "noč′"
+  ],
+  "Lithuanian": [
+    "naktis"
+  ],
+  "Albanian": [
+    "natë"
   ]
 }

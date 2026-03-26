@@ -9,7 +9,7 @@ OUTPUT_DIR.mkdir(exist_ok=True)
 
 def resolve_input_html(): # Checks whether the user supplied a filename on the command line
     if len(sys.argv) < 2:
-        raise SystemExit("Please enter the html file in the format: py parser.py <filename.html>")
+        raise SystemExit("Please enter the html file in the format: py parser.py <filename>.html")
     filename = sys.argv[1]
     input_html = BASE_DIR / "input" / filename
     if not input_html.exists():
@@ -40,14 +40,19 @@ def trim_etymology_html(html: str) -> str: # Chops off everything including and 
 def extract_language_forms(etymology_div):
     result = {}
     current_language = None
-    for span in etymology_div.find_all("span"):
-        classes = span.get("class", []) # should really be called class
+    for node in etymology_div.descendants:
+        if getattr(node, "name", None) == "p":
+            current_language = None
+            continue
+        if getattr(node, "name", None) != "span":
+            continue
+        classes = node.get("class", [])
         if "language-name" in classes:
-            current_language = span.get_text(strip=True)
+            current_language = node.get_text(strip=True)
             if current_language not in result:
                 result[current_language] = []
         elif "foreign-form" in classes and current_language is not None:
-            form = span.get_text(strip=True)
+            form = node.get_text(strip=True)
             if form not in result[current_language]:
                 result[current_language].append(form)
     return result
