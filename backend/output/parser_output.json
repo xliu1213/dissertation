@@ -1,108 +1,59 @@
 {
   "Old Frisian": [
-    "nacht"
+    "tzerke",
+    "tzerk",
+    "tzierke",
+    "tzark",
+    "tziurke",
+    "kerke"
   ],
   "West Frisian": [
-    "nacht"
+    "tsjerke"
+  ],
+  "Old Dutch": [
+    "kirika",
+    "kerk"
   ],
   "Middle Dutch": [
-    "nacht"
+    "kirke",
+    "kerke",
+    "keerke",
+    "kerk"
   ],
   "Dutch": [
-    "nacht"
+    "kerk"
   ],
   "Old Saxon": [
-    "naht"
+    "kerika",
+    "kirika"
   ],
   "Middle Low German": [
-    "nacht"
+    "kerke",
+    "karke"
   ],
   "Old High German": [
-    "naht"
+    "kirihha",
+    "khirihha",
+    "chiricha",
+    "chilihha",
+    "chīlihha"
   ],
   "Middle High German": [
-    "naht"
+    "kirche",
+    "kilche"
   ],
   "German": [
-    "Nacht"
+    "Kirche"
   ],
-  "Old Icelandic": [
-    "nátt",
-    "nótt"
+  "Byzantine Greek": [
+    "κυριακόν",
+    "κυριακὸν δῶμα"
   ],
-  "Icelandic": [
-    "nótt"
-  ],
-  "Old Swedish": [
-    "nat"
-  ],
-  "Swedish": [
-    "natt"
-  ],
-  "Danish": [
-    "nat"
-  ],
-  "Gothic": [
-    "nahts"
-  ],
-  "Indo-European": [],
-  "Sanskrit": [
-    "nak",
-    "nakt-"
+  "Hellenistic Greek": [
+    "κυριακός"
   ],
   "ancient Greek": [
-    "νυκτ-",
-    "νύξ"
-  ],
-  "classical Latin": [
-    "noct-",
-    "nox"
-  ],
-  "Old French": [
-    "noit",
-    "nuit"
-  ],
-  "Middle French": [],
-  "French": [
-    "nuit"
-  ],
-  "Italian": [
-    "notte"
-  ],
-  "Spanish": [
-    "noche"
-  ],
-  "Portuguese": [
-    "noite"
-  ],
-  "Romanian": [
-    "noapte"
-  ],
-  "Gaulish": [
-    "noct-"
-  ],
-  "Early Irish": [
-    "nocht"
-  ],
-  "Irish": [
-    "anocht"
-  ],
-  "Old Welsh": [
-    "henoid"
-  ],
-  "Welsh": [
-    "heno"
-  ],
-  "Old Church Slavonic": [
-    "noshtĭ"
-  ],
-  "Russian": [
-    "noč′"
-  ],
-  "Lithuanian": [
-    "naktis"
-  ],
-  "Albanian": [
-    "natë"
+    "κύριος",
+    "‑ακός"
   ]
 }

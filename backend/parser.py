@@ -37,6 +37,20 @@ def trim_etymology_html(html: str) -> str: # Chops off everything including and 
         notes_h3.extract()
     return "".join(str(x) for x in soup.contents).strip()
 
+def trim_after_discussion_start(html: str) -> str:
+    stop_phrases = [
+        "The place and time of borrowing"
+    ]
+    lower_html = html.lower()
+    cut_positions = []
+    for phrase in stop_phrases:
+        pos = lower_html.find(phrase.lower())
+        if pos != -1:
+            cut_positions.append(pos)
+    if cut_positions:
+        html = html[:min(cut_positions)]
+    return html.strip()
+
 def extract_language_forms(etymology_div):
     result = {}
     current_language = None
@@ -76,6 +90,7 @@ input_html = resolve_input_html()
 ety = parse_html(input_html)
 html = str(ety)
 trimmed_html = trim_etymology_html(html)
+trimmed_html = trim_after_discussion_start(trimmed_html)
 ety_soup = BeautifulSoup(trimmed_html, "html.parser")
 entries = extract_language_forms(ety_soup)
 export_json(entries, "output")
