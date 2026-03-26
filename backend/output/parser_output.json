@@ -1,59 +1,55 @@
 {
+  "Old English": [
+    "hálig",
+    "‑eg",
+    "hálg-",
+    "hál"
+  ],
+  "Northumbrian": [
+    "hǽlig"
+  ],
+  "Middle English": [
+    "hely"
+  ],
   "Old Frisian": [
-    "tzerke",
-    "tzerk",
-    "tzierke",
-    "tzark",
-    "tziurke",
-    "kerke"
-  ],
-  "West Frisian": [
-    "tsjerke"
-  ],
-  "Old Dutch": [
-    "kirika",
-    "kerk"
-  ],
-  "Middle Dutch": [
-    "kirke",
-    "kerke",
-    "keerke",
-    "kerk"
-  ],
-  "Dutch": [
-    "kerk"
+    "hêlech"
   ],
   "Old Saxon": [
-    "kerika",
-    "kirika"
+    "hêlag",
+    "‑eg"
   ],
-  "Middle Low German": [
-    "kerke",
-    "karke"
+  "Middle Dutch": [
+    "heilech",
+    "‑egh‑"
+  ],
+  "Dutch": [
+    "heilig"
   ],
   "Old High German": [
-    "kirihha",
-    "khirihha",
-    "chiricha",
-    "chilihha",
-    "chīlihha"
+    "heilag",
+    "heil"
   ],
   "Middle High German": [
-    "kirche",
-    "kilche"
+    "heilec"
   ],
   "German": [
-    "Kirche"
+    "heilig"
   ],
-  "Byzantine Greek": [
-    "κυριακόν",
-    "κυριακὸν δῶμα"
+  "Old Norse": [
+    "heilagr",
+    "heill"
   ],
-  "Hellenistic Greek": [
-    "κυριακός"
+  "Swedish": [
+    "helig"
   ],
-  "ancient Greek": [
-    "κύριος",
-    "‑ακός"
+  "Danish": [
+    "hellig"
+  ],
+  "Old Germanic": [
+    "*hailag-oz"
+  ],
+  "Gothic": [
+    "weihs",
+    "hailag"
   ]
 }

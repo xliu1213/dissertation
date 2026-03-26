@@ -55,16 +55,25 @@ def extract_language_forms(etymology_div):
     result = {}
     current_language = None
     skip_example_forms = False
+    derivation_starters = [
+        "a derivative of",
+        "or of the derivative noun",
+        "see ",
+        "compare "
+    ]
     for node in etymology_div.descendants:
         node_name = getattr(node, "name", None)
         if node_name == "p": # Stop carrying a language across paragraph boundaries
             current_language = None
             skip_example_forms = False
             continue
-        if node_name is None: # Look at plain text nodes as well as tags
+        if node_name is None:  # Look at plain text nodes as well as tags
             text = str(node).strip().lower()
-            if text == "as" or ", as " in f" {text} " or text.endswith(" as"): # Skip example forms introduced by "... as X"
+            if text == "as" or ", as " in f" {text} " or text.endswith(" as"):
                 skip_example_forms = True
+            if any(phrase in text for phrase in derivation_starters):
+                current_language = None
+                skip_example_forms = False
             continue
         if node_name != "span": # Only span tags matter for extraction
             continue
