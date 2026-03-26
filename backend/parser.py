@@ -40,18 +40,27 @@ def trim_etymology_html(html: str) -> str: # Chops off everything including and 
 def extract_language_forms(etymology_div):
     result = {}
     current_language = None
+    skip_example_forms = False
     for node in etymology_div.descendants:
-        if getattr(node, "name", None) == "p":
+        node_name = getattr(node, "name", None)
+        if node_name == "p": # Stop carrying a language across paragraph boundaries
             current_language = None
+            skip_example_forms = False
             continue
-        if getattr(node, "name", None) != "span":
+        if node_name is None: # Look at plain text nodes as well as tags
+            text = str(node).strip().lower()
+            if text == "as" or ", as " in f" {text} " or text.endswith(" as"): # Skip example forms introduced by "... as X"
+                skip_example_forms = True
+            continue
+        if node_name != "span": # Only span tags matter for extraction
             continue
         classes = node.get("class", [])
         if "language-name" in classes:
             current_language = node.get_text(strip=True)
+            skip_example_forms = False
             if current_language not in result:
                 result[current_language] = []
-        elif "foreign-form" in classes and current_language is not None:
+        elif "foreign-form" in classes and current_language is not None and not skip_example_forms:
             form = node.get_text(strip=True)
             if form not in result[current_language]:
                 result[current_language].append(form)
