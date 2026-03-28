@@ -39,6 +39,10 @@ def find_visible_children(name): # Proto-Germanic
             visible.append(child)
         else:
             visible.extend(find_visible_children(child))
+    visible.sort(key=lambda lang: order_index.get(lang, float("inf")))
+    if name == "Indo-European" and "Proto-Germanic" in visible:
+        visible.remove("Proto-Germanic")
+        visible.insert(0, "Proto-Germanic")
     return visible
 
 def build_tree(name): # Proto-Germanic or Indo-European
@@ -52,9 +56,6 @@ def build_tree(name): # Proto-Germanic or Indo-European
     if forms:
         node["forms"] = forms
     children = find_visible_children(name)
-    if name == "Indo-European" and "Proto-Germanic" in children:
-        children.remove("Proto-Germanic")
-        children.insert(0, "Proto-Germanic")
     node["children"] = [
         build_tree(child)
         for child in children
