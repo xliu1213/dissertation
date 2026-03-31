@@ -16,7 +16,11 @@ From the project root, run:
 ```bash
 python run.py <word>.html
 ```
+or
+```bash
+py run.py <word>.html
+```
 For example:
 ```bash
-python run.py father.html
+py run.py father.html
 ```
