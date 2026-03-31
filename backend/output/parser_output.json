@@ -1,104 +1,125 @@
 {
   "Old Frisian": [
-    "fīf"
+    "fader",
+    "feder"
   ],
   "West Frisian": [
-    "fiif"
-  ],
-  "Old Saxon": [
-    "fīf"
-  ],
-  "Middle Low German": [
-    "vīf"
+    "faar"
   ],
   "Old Dutch": [
-    "fīf"
+    "fadar",
+    "fader"
   ],
-  "Middle Dutch": [],
+  "Middle Dutch": [
+    "vāder"
+  ],
   "Dutch": [
-    "vijf"
+    "vader"
+  ],
+  "Old Saxon": [
+    "fadar",
+    "fader"
+  ],
+  "Middle Low German": [
+    "vāder"
   ],
   "Old High German": [
-    "fimf",
-    "finf",
-    "funf"
+    "fater"
   ],
   "Middle High German": [
-    "vünf"
+    "vater"
   ],
   "German": [
-    "fünf"
+    "Vater"
+  ],
+  "early Scandinavian": [
+    "faþiR"
   ],
   "Old Icelandic": [
-    "fimm",
-    "fim"
+    "faðir"
   ],
-  "Icelandic": [
-    "fimm"
+  "Norn": [
+    "fa",
+    "fy",
+    "fyrin"
   ],
   "Old Swedish": [
-    "fäm"
+    "faþir"
   ],
   "Swedish": [
-    "fem"
+    "fader",
+    "far"
   ],
   "Old Danish": [
-    "fæm"
+    "fathær"
   ],
   "Danish": [
-    "fem"
+    "fader",
+    "far"
   ],
   "Gothic": [
-    "fimf"
+    "fadar",
+    "atta"
   ],
   "Indo-European": [],
   "Sanskrit": [
-    "pañca"
+    "pitṛ"
   ],
-  "Avestan": [
-    "panca"
+  "Old Avestan": [
+    "ptar"
+  ],
+  "Younger Avestan": [
+    "pitar"
   ],
   "ancient Greek": [
-    "πέντε",
-    "πέμπε"
+    "πατήρ"
   ],
   "classical Latin": [
-    "quīnque"
+    "pater"
+  ],
+  "Old French": [
+    "paire",
+    "pedre"
+  ],
+  "Middle French": [
+    "pere"
+  ],
+  "French": [
+    "père"
+  ],
+  "Old Occitan": [],
+  "Occitan": [
+    "paire"
+  ],
+  "Catalan": [
+    "pare"
+  ],
+  "Spanish": [
+    "padre"
+  ],
+  "Portuguese": [
+    "pãe"
+  ],
+  "Italian": [
+    "padre"
   ],
   "Oscan": [
-    "pomtis"
-  ],
-  "Umbrian": [
-    "puntes"
+    "patir"
   ],
   "Gaulish": [
-    "pempe"
+    "ater-",
+    "atr-"
   ],
-  "Old Irish": [
-    "cóic"
-  ],
-  "Old Welsh": [
-    "pimp"
-  ],
-  "Welsh": [
-    "pump"
+  "Early Irish": [
+    "athair"
   ],
   "Armenian": [
-    "hing"
+    "hayr"
   ],
   "Tocharian A": [
-    "päñ"
+    "pācar"
   ],
   "Tocharian B": [
-    "piś"
-  ],
-  "Old Church Slavonic": [
-    "pętĭ"
-  ],
-  "Lithuanian": [
-    "penki"
-  ],
-  "Albanian": [
-    "pesë"
+    "pācer"
   ]
 }

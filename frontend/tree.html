@@ -52,7 +52,7 @@ function drawTree() {
   const width = svgEl.node().clientWidth; // 1865
   const height = svgEl.node().clientHeight; // 815
   document.getElementById("title").textContent = mode.title;
-  d3.json(mode.file).then(function(data) { 
+  d3.json(mode.file + "?v=" + Date.now()).then(function(data) {
     if (!data || Object.keys(data).length === 0) { // If backend returned empty object, render nothing
       svgEl.selectAll("*").remove();
       document.getElementById("title").textContent =

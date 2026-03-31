@@ -11,19 +11,12 @@
 6. Paste the copied HTML into a new file with a `.html` extension.
 7. Save that file in `backend/input/`.
 
-## 2. Run the parser and converter
+## 2. Run the project
 From the project root, run:
 ```bash
-cd backend
-py parser.py <filename>.html
-py converter.py
+python run.py <word>.html
 ```
-
-## 3. Start a local server in the project root
+For example:
 ```bash
-cd ..
-py -m http.server 8080 --bind 127.0.0.1
+python run.py father.html
 ```
-
-## 4. Open the visualisation
-Open this in your browser: http://127.0.0.1:8080/frontend/tree.html
